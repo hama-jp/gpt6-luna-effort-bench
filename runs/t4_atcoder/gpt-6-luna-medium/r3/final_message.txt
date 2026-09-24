@@ -1,0 +1,8 @@
+解答を `solutions/` に置き、問題文の入出力例で確認しました。
+
+- A: [a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-medium-r3/solutions/a.py) — 例1〜3で確認済み
+- B: [b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-medium-r3/solutions/b.py) — 例1〜3で確認済み
+- C: [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-medium-r3/solutions/c.cpp) — 例1〜3で確認済み
+- E: [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-medium-r3/solutions/e.cpp) — 例1〜2で確認済み
+
+D・F・G は解答を置けていません。

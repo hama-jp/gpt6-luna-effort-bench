@@ -1,0 +1,28 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '1,240p' ledgerlite/models.py && sed -n '1,260p' ledgerlite/importer.py && sed -n '1,200p' ledgerlite/dedupe.py && sed -n '1,260p' ledgerlite/report.py && sed -n '1,260p' ledgerlite/cli.py && sed -n '1,260p' tests/test_basic.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/__init__.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest && git diff --stat && git status --short'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'import shutil; shutil.rmtree(\\\"ledgerlite/__pycache__\\\", ignore_errors=True); shutil.rmtree(\\\"tests/__pycache__\\\", ignore_errors=True)' && git status --short\"",
+   "exit_code": 0
+  }
+ ]
+}

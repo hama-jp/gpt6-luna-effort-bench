@@ -1,0 +1,176 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,12):\n  bad=[]\n  for l in range(1,1<<n):\n    dp=[]; c={}\n    for x in range(l,1<<n):\n      dp.append(x.bit_count()); c[x.bit_count()]=c.get(x.bit_count(),0)+1\n      # stop all r choices, update LNIS naïvely\n      for r in range(l,x+1):\n        a=[y.bit_count() for y in range(l,r+1)]\n        z=[1]*len(a)\n        for i in range(len(a)):\n          for j in range(i):\n            if a[j]>=a[i]: z[i]=max(z[i],z[j]+1)\n        if max(z)\"'!=max(a.count(k) f",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import combinations\nfor n in range(1,10):\n  bad=[]\n  for l in range(1,1<<n):\n   a=[]\n   dp=[]\n   for r in range(l,1<<n):\n    a.append(r.bit_count())\n    dp.append(1+max([dp[i] for i in range(len(dp)) if a[i]>=a[-1]]+[0]))\n    best=max(dp)\n    # max LNIS restricted to <=2 distinct values via iterate first/last level and enumerate greedy\n    ok=False\n    for p in range(n+1):\n     for q in range(p+1):\n      # sequence from p's to q's; can select p then",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(3,13):\n maxdelta=0; ex=[]\n for l in range(1,1<<n):\n  c=[0]*(n+1); dp=[0]*(n+1)\n  for r in range(l,1<<n):\n   v=r.bit_count(); c[v]+=1\n   dp[v]=1+max(dp[v:])\n   ans=max(dp); mf=max(c)\n   if ans>mf:\n    delta=ans-mf\n    if delta>maxdelta: maxdelta=delta; ex=[(l,r,r-l+1,ans,mf)]\n    elif delta==maxdelta: ex.append((l,r,r-l+1,ans,mf))\n print(n,'max delta',maxdelta,'example',ex[:1])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor k in range(1,17):\n dp=[0]*(k+1)\n for x in range(1<<k):\n  v=x.bit_count(); dp[v]=1+max(dp[v:])\n  # wrong update in-place? dp suffix values represent prior max exact end\n print(k,max(dp),max(__import__('math').comb(k,t) for t in range(k+1)))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,12):\n for k in range(n+1):\n  bad=None; size=1<<k\n  for base in range(0,1<<n,size):\n   for l in range(base,base+size):\n    dp=[0]*(n+1); cnt=[0]*(n+1)\n    for r in range(l,base+size):\n     v=r.bit_count(); cnt[v]+=1; dp[v]=1+max(dp[v:])\n     if max(dp)>max(cnt): bad=(l,r,max(dp),max(cnt)); break\n    if bad: break\n   if bad: break\n  if bad: break\n if bad:\n  print('n',n,'bad',bad); break\n print('n',n,'ok')\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,12):\n bad=None\n for k in range(n+1):\n  size=1<<k\n  for base in range(0,1<<n,size):\n   for l in range(base,base+size):\n    dp=[0]*(n+1); cnt=[0]*(n+1)\n    for r in range(l,base+size):\n     v=r.bit_count(); cnt[v]+=1; dp[v]=1+max(dp[v:])\n     if max(dp)>max(cnt): bad=(k,l,r,max(dp),max(cnt)); break\n    if bad: break\n   if bad: break\n  if bad: break\n if bad:\n  print('n',n,'bad',bad); break\n print('n',n,'ok')\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndp=[0]*10\nfor x in range(15,33):\n v=x.bit_count(); dp[v]=1+max(dp[v:]); print(x,v,dp, max(dp))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport math\nfor k in range(1,8):\n dp=[0]*(k+1)\n for x in range(1<<k):\n  v=x.bit_count(); dp[v]=1+max(dp[v:])\n print(k,dp, [math.comb(k,v) for v in range(k+1)])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndef trans(k):\n d=k+2; neg=-10**9\n M=[[0 if i==j else neg for j in range(d)] for i in range(d)]\n for x in range(1<<k):\n  v=x.bit_count()\n  # symbol op matrix S: row v max old[v], 1+max old[j>=v]\n  S=[[0 if i==j else neg for j in range(d)] for i in range(d)]\n  for j in range(v,d): S[v][j]=max(S[v][j],1)\n  # S @ M\n  M=[[max(S[i][a]+M[a][j] for a in range(d)) for j in range(d)] for i in range(d)]\n return M\nfor k in range(1,7):\n M=trans(k)\n bad=0; sign=None\n for i in r",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndef T(k):\n d=k+2; N=-10**8; M=[[0 if i==j else N for j in range(d)] for i in range(d)]\n for x in range(1<<k):\n  v=x.bit_count(); S=[[0 if i==j else N for j in range(d)] for i in range(d)]\n  for j in range(v,d): S[v][j]=max(S[v][j],1)\n  M=[[max(S[i][a]+M[a][j] for a in range(d)) for j in range(d)] for i in range(d)]\n return M\nk=5; M=T(k)\nfor i in range(k+1):print(i,M[i][:k+1])\nfor i in range(k+1):\n for a in range(i+1,k+1):\n  for j in range(k+1):\n   for b in range(j",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndef T(k):\n d=k+1; N=-10**8; M=[[0 if i==j else N for j in range(d)] for i in range(d)]\n for x in range(1<<k):\n  v=x.bit_count(); S=[[0 if i==j else N for j in range(d)] for i in range(d)]\n  for j in range(v,d): S[v][j]=max(S[v][j],1)\n  M=[[max(S[i][a]+M[a][j] for a in range(d)) for j in range(d)] for i in range(d)]\n return M\nfor k in range(1,9):\n M=T(k); plus=minus=0; ex=None\n for i in range(k+1):\n  for a in range(i+1,k+1):\n   for j in range(k+1):\n    for b in ran",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nD=12; N=-10**8\nI=[[0 if i==j else N for j in range(D+1)] for i in range(D+1)]\nT= [ [row[:] for row in I] ]\n# T0 symbol0\nm=[r[:] for r in I]\nfor j in range(D+1):m[0][j]=1\nT[0]=m\ndef shift(M,c):\n z=[r[:] for r in I]\n for i in range(D+1-c):\n  for j in range(i,D+1-c):z[i+c][j+c]=M[i][j]\n return z\ndef mul(A,B):\n return [[max(A[i][k]+B[k][j] for k in range(D+1)) for j in range(D+1)] for i in range(D+1)]\nfor k in range(1,D+1): T.append(mul(shift(T[k-1],1),T",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\n# build T matrices full D=12\nD=12; NEG=-10**9\nI=[[0 if i==j else NEG for j in range(D+1)] for i in range(D+1)]\ndef sh(M,c):\n Z=[r[:] for r in I]\n for i in range(D+1-c):\n  for j in range(D+1-c):Z[i+c][j+c]=M[i][j]\n return Z\ndef mul(A,B):\n return [[max(A[i][k]+B[k][j] for k in range(D+1)) for j in range(D+1)] for i in range(D+1)]\nT=[];M=[r[:] for r in I]\nfor j in range(D+1): M[0][j]=1\nT.append(M)\nfor k in range(1,D+1): T.append(mul(sh(T[k-1],1),T[k-1]))\nfor k in ran",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'mkdir -p solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/a.cpp -o solutions/.a.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/b.cpp -o solutions/.b.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/e.cpp -o solutions/.e.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/f.cpp -o solutions/.f.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/d.cpp -o solutions/.d.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/g.cpp -o solutions/.g.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/c.cpp -o solutions/.c.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '8\nchokudai\n**o*u*ai\n' | solutions/.b.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'chimpanzee\n' | solutions/.a.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\nyiwiy\n*****\n' | solutions/.b.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\n1 2 1 2 3\n' | solutions/.c.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '10\n11 9 1 3 17 19 10 19 17 3\n' | solutions/.c.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'live\n' | solutions/.a.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '10\n1 1 1 3 2 5 4 3 6 5\n' | solutions/.c.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'femur\n' | solutions/.a.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\nsnuke\nsnake\n' | solutions/.b.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '2 3 10\n50 6\n22 30\n20 12 24\n' | solutions/.d.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 20 30\n605776135 133105105\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\n' | solutions/.d.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\n' | solutions/.e.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '1 7 67\n677677677766666 0\n777666777\n20 12 24 67 67 67 67\n' | solutions/.d.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '4 19\n2 3 1 1\n3 4 4 10\n' | solutions/.f.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 676767\n60932 508200 22883 481150 426836 554098 276223 307959 133025 573906 17711 413230 274246 500277 524959 477728 546547 43099 324227 660187\n552697 293978 246000 159233 213736 628198 394200 194076 618720 453035 615100 331522 669419 180856 530693 399531 223149 159334 102107 598633\n' | solutions/.f.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '6 7\n3 6 5 2 4 1\n4 5\n2 3\n3 5\n4 6\n3 4\n1 6\n3 5\n' | solutions/.e.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '6 67\n1 6 9 2 3 1\n1 10 3 7 2 2\n' | solutions/.f.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\n' | solutions/.g.check\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'rm solutions/.a.check solutions/.b.check solutions/.c.check solutions/.d.check solutions/.e.check solutions/.f.check solutions/.g.check'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'rg --files solutions'",
+   "exit_code": 0
+  }
+ ]
+}

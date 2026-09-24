@@ -1,0 +1,36 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in ledgerlite/*.py tests/*.py; do echo \"===== $f\"; sed -n '\"'1,260p' \\\"\"'$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff -- ledgerlite tests && git status --short'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'rm -r ledgerlite/__pycache__ tests/__pycache__ && git status --short'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'rg -n \"def to_money|_BANKA_FORMATS|def parse_number|def categorize|def normalise|def dedupe|def in_month|def monthly_summary|rounded_merchants|test_\" ledgerlite tests/test_spec_regressions.py'",
+   "exit_code": 0
+  }
+ ]
+}

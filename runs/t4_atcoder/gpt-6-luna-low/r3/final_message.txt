@@ -1,0 +1,3 @@
+`solutions/a.py`、`solutions/b.py`、`solutions/c.py` を作成しました。
+
+A の例1は `liver`、B の例1は `Yes`、C の例1は `1 / 1 / 2` となり、出力例と一致しました。B の追加確認（`snake` と `snake`）も `Yes` でした。

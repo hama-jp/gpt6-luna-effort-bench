@@ -1,0 +1,38 @@
+{
+  "classes": {
+    "B1_BankADayMonth": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B2_Thousands": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B3_Priority": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B4_SameFileDuplicates": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B5_MonthEnd": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B6_Cents": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "B7_Refunds": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "R_Regression": {
+      "pass": true,
+      "last_line": "OK"
+    }
+  },
+  "passed": 8,
+  "total": 8
+}

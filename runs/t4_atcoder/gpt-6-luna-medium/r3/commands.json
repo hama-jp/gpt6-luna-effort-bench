@@ -1,0 +1,32 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files problems'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"mkdir -p solutions && cat > solutions/a.py <<'EOF'\ns=input().strip()\nprint(s+('r' if s.endswith('e') else 'er'))\nEOF\ncat > solutions/b.py <<'EOF'\nn=int(input()); s=input().strip(); t=input().strip()\nprint('Yes' if all(y=='*' or x==y for x,y in zip(s,t)) else 'No')\nEOF\ncat > solutions/c.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;cin>>n; multiset<int,greater<int>> q;for(int i=0;i<n;i++){int x;cin>>x;q.inser",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/c.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;cin>>n;long long x; long long f=-1,s=-1,t=-1;for(int i=0;i<n;i++){cin>>x;if(x>f)t=s,s=f,f=x;else if(x>s)t=s,s=x;else if(x>t)t=x;if(i>=2)cout<<t<<'\\\\n';}}\nEOF\npython3 - <<'PY'\nimport subprocess\ncases={\n'a': [('live','liver'),('femur','femurer'),('chimpanzee','chimpanzeer')],\n'b': [('8\\\\nchokudai\\\\n**o*u*ai\\\\n','Yes'),('5\\\\nsnuke\\\\nsnake\\\\n','No')",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"ls solutions && g++ -std=c++20 -O2 solutions/c.cpp -o c_bin && printf '5\\\\n1 2 1 2 3\\\\n' | ./c_bin && g++ -std=c++20 -O2 solutions/e.cpp -o e_bin && printf '5 3\\\\n3 1 4 2 5\\\\n1 3\\\\n1 5\\\\n1 4\\\\n' | ./e_bin\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/e.cpp -o e_bin'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5 3\\\\n3 1 4 2 5\\\\n1 3\\\\n1 5\\\\n1 4\\\\n' | ./e_bin; printf '6 7\\\\n3 6 5 2 4 1\\\\n4 5\\\\n2 3\\\\n3 5\\\\n4 6\\\\n3 4\\\\n1 6\\\\n3 5\\\\n' | ./e_bin; printf 'live\\\\n' | python3 solutions/a.py; printf '8\\\\nchokudai\\\\n**o*u*ai\\\\n' | python3 solutions/b.py\"",
+   "exit_code": 0
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+  "problems": {
+    "a": {
+      "lang": "py",
+      "verdict": "AC",
+      "passed": 13,
+      "total": 13,
+      "max_time_s": 0.22
+    },
+    "b": {
+      "lang": "py",
+      "verdict": "AC",
+      "passed": 21,
+      "total": 21,
+      "max_time_s": 0.21
+    },
+    "c": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 26,
+      "total": 26,
+      "max_time_s": 0.33
+    },
+    "d": {
+      "lang": null,
+      "verdict": "NO_SUBMISSION",
+      "passed": 0,
+      "total": 0
+    },
+    "e": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 35,
+      "total": 35,
+      "max_time_s": 0.3
+    },
+    "f": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 25,
+      "total": 25,
+      "max_time_s": 0.12
+    },
+    "g": {
+      "lang": "py",
+      "verdict": "large0: WA",
+      "passed": 13,
+      "total": 44,
+      "max_time_s": 1.35
+    }
+  },
+  "passed": 5,
+  "total": 7,
+  "points": 1575,
+  "ac": "ABCEF"
+}

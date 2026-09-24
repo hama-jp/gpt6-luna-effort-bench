@@ -1,0 +1,5 @@
+多通貨対応を実装しました。読み込み時に通貨を保持し、重複判定に通貨を加え、為替レートの読み込み・換算と CLI の `--base`／`--rates` に対応しています。月次レポートには通貨行を追加しました。
+
+新しい為替処理は [fx.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-medium-r1/ledgerlite/fx.py)、追加テストは [test_basic.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-medium-r1/tests/test_basic.py) にあります。
+
+`python3 -m unittest` は成功しました（9件）。`git diff --check` も問題ありません。

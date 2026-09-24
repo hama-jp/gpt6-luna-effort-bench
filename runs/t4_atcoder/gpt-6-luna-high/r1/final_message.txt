@@ -1,0 +1,10 @@
+解答を `solutions/` に置き、入出力例で確認しました。
+
+- A: [a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/a.py) — 例1〜3すべて一致
+- B: [b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/b.py) — 例1〜3すべて一致
+- C: [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/c.cpp) — 例1〜3すべて一致
+- D: [d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/d.cpp) — 例1〜3すべて一致
+- E: [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/e.cpp) — 例1〜2すべて一致
+- F: [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/f.cpp) — 例1〜3すべて一致
+
+Gは、制約内の大きな区間でも正しく処理できる解法を完成できず、解答を置いていません。

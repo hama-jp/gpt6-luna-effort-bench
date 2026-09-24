@@ -1,0 +1,8 @@
+多通貨対応を実装しました。
+
+- [importer.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-max-r1/ledgerlite/importer.py:82) で任意の `Currency` 列を読み込み、空欄や列がない場合は指定した基準通貨を使います。`Transaction` には通貨と換算前金額を追加しました。
+- [fx.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-max-r1/ledgerlite/fx.py:17) にレート読み込みと換算を実装しました。直近7日以内の過去レートを使い、金額はセント単位の half-up で丸めます。
+- 重複判定に通貨を含め、レポートに基準通貨を表示します。CLIでは `--base` と `--rates` を追加し、レート不足時は終了コード2でエラーを出します。
+- [test_multicurrency.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-max-r1/tests/test_multicurrency.py:1) に新しい動作のテストを追加しました。
+
+`python3 -m unittest` は14件すべて成功し、`git diff --check` も通りました。

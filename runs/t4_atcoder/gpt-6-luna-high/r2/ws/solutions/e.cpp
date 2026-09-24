@@ -1,0 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Node{int mn,mx,imn,imx;};
+Node mergeN(Node a,Node b){if(a.imn==-1)return b;if(b.imn==-1)return a;return {min(a.mn,b.mn),max(a.mx,b.mx),a.mn<=b.mn?a.imn:b.imn,a.mx>=b.mx?a.imx:b.imx};}
+int main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n,m;if(!(cin>>n>>m))return 0;int z=1;while(z<n)z*=2;vector<Node> t(2*z);for(int i=0;i<n;i++){int x;cin>>x;t[z+i]={x,x,i,i};}for(int i=z-1;i;i--){auto a=t[2*i],b=t[2*i+1];t[i]={min(a.mn,b.mn),max(a.mx,b.mx),a.mn<=b.mn?a.imn:b.imn,a.mx>=b.mx?a.imx:b.imx};}auto query=[&](int l,int r){Node left{INT_MAX,INT_MIN,-1,-1},right=left;for(l+=z,r+=z;l<r;l/=2,r/=2){if(l&1){auto a=left,b=t[l++];left=mergeN(a,b);}if(r&1){auto b=t[--r],a=right;right=mergeN(a,b);}}return mergeN(left,right);};auto upd=[&](int p,int x){int i=z+p;t[i]={x,x,p,p};for(i/=2;i;i/=2){auto a=t[2*i],b=t[2*i+1];t[i]={min(a.mn,b.mn),max(a.mx,b.mx),a.mn<=b.mn?a.imn:b.imn,a.mx>=b.mx?a.imx:b.imx};}};for(int q=0;q<m;q++){int l,r;cin>>l>>r;--l;Node v=query(l,r);int p=v.imn,s=v.imx;int x=t[z+p].mn,y=t[z+s].mn;upd(p,y);upd(s,x);}for(int i=0;i<n;i++)cout<<t[z+i].mn<<(i+1==n?'\n':' ');}

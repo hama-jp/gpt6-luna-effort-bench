@@ -1,0 +1,3 @@
+`answers.json` を作成し、q01〜q16の回答を記入しました。
+
+[answers.json](~/luna-bench/ws/runs-t3_document-gpt-6-luna-high-r1/answers.json)

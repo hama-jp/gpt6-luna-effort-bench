@@ -1,0 +1,56 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -la && rg --files problems solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom collections import Counter\nfor l in range(1,100):\n for r in range(l, min(150,l+30)):\n  a=[x.bit_count() for x in range(l,r+1)]\n  dp=[]\n  best=0\n  for x in a:\n   v=1+max((d for y,d in dp if y>=x),default=0)\n   dp.append((x,v));best=max(best,v)\n  m=max(Counter(a).values())\n  if best\"'!=m:\n   print('\"'counterexample',l,r,a,best,m);raise SystemExit\nprint('ok')\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"ls -l .tmp/{c,d,e,f,g} && .tmp/g << 'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 2
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/c.cpp -o .tmp/c && g++ -std=c++20 -O2 solutions/d.cpp -o .tmp/d && g++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e && g++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f && g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'live\\\\n' | python3 solutions/a.py && printf '8\\\\nchokudai\\\\n**o*u*ai\\\\n' | python3 solutions/b.py && .tmp/c << 'EOF'\n5\n1 2 1 2 3\nEOF\n.tmp/d << 'EOF'\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\n.tmp/e << 'EOF'\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\n.tmp/f << 'EOF'\n4 19\n2 3 1 1\n3 4 4 10\nEOF\n.tmp/g << 'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g && .tmp/g << 'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g && .tmp/g << 'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'femur\\\\n' | python3 solutions/a.py\nprintf '5\\\\nsnuke\\\\nsnake\\\\n' | python3 solutions/b.py\n.tmp/c << 'EOF'\n10\n11 9 1 3 17 19 10 19 17 3\nEOF\n.tmp/d << 'EOF'\n20 20 30\n605776135 133105105\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 94189423",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'chimpanzee\\\\n' | python3 solutions/a.py\nprintf '5\\\\nyiwiy\\\\n*****\\\\n' | python3 solutions/b.py\n.tmp/c << 'EOF'\n10\n1 1 1 3 2 5 4 3 6 5\nEOF\n.tmp/d << 'EOF'\n1 7 67\n677677677766666 0\n777666777\n20 12 24 67 67 67 67\nEOF\n.tmp/f << 'EOF'\n20 676767\n60932 508200 22883 481150 426836 554098 276223 307959 133025 573906 17711 413230 274246 500277 524959 477728 546547 43099 324227 660187\n552697 293978 246000 159233 213736 628198 394200 194076 618720 453035 615100 331522 669419 180856 530",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"time .tmp/g << 'EOF'\n1\n3 6\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git status --short && ls solutions'",
+   "exit_code": 0
+  }
+ ]
+}

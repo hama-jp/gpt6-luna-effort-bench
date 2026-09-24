@@ -1,0 +1,28 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!*__pycache__*'\"' -g 'AGENTS.md' -g '*.py' -g '*.md' -g '*.csv'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '1,240p' ledgerlite/models.py && sed -n '1,280p' ledgerlite/importer.py && sed -n '1,240p' ledgerlite/dedupe.py && sed -n '1,280p' ledgerlite/report.py && sed -n '1,300p' ledgerlite/cli.py && sed -n '1,300p' tests/test_basic.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --check && git status --short && git diff --stat'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'from pathlib import Path; import shutil; [shutil.rmtree(p) for p in (Path(\\\"ledgerlite/__pycache__\\\"), Path(\\\"tests/__pycache__\\\")) if p.exists()]' && git diff --check && git status --short\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --check && git status --short'",
+   "exit_code": 0
+  }
+ ]
+}

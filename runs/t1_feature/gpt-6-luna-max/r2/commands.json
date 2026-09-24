@@ -1,0 +1,24 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!*__pycache__*'\"'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g 'README*' -g '*.py' && python3 - <<'PY'\nfrom pathlib import Path\nfor name in ['ledgerlite/models.py','ledgerlite/importer.py','ledgerlite/dedupe.py','ledgerlite/report.py','ledgerlite/cli.py','ledgerlite/categorize.py','ledgerlite/__init__.py','tests/test_basic.py']:\n print(f'===== {name} =====')\n print(Path(name).read_text())\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --check && git status --short && git diff -- ledgerlite/models.py ledgerlite/importer.py ledgerlite/dedupe.py ledgerlite/report.py ledgerlite/fx.py ledgerlite/cli.py tests/test_multicurrency.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom pathlib import Path\nimport shutil\nfor path in (Path('ledgerlite/__pycache__'), Path('tests/__pycache__')):\n    if path.exists():\n        shutil.rmtree(path)\nPY\ngit diff --check && git status --short\"",
+   "exit_code": 0
+  }
+ ]
+}

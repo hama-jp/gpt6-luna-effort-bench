@@ -1,0 +1,24 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '1,240p' ledgerlite/models.py && sed -n '1,260p' ledgerlite/importer.py && sed -n '1,220p' ledgerlite/dedupe.py && sed -n '1,260p' ledgerlite/report.py && sed -n '1,260p' ledgerlite/cli.py && sed -n '1,260p' tests/test_basic.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --stat && git diff --check && python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"git status --short && git diff --check && sed -n '1,180p' ledgerlite/fx.py\"",
+   "exit_code": 0
+  }
+ ]
+}

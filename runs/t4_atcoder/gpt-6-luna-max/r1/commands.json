@@ -1,0 +1,304 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'rg --files problems solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/e.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/d.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/b.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/a.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/c.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/f.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat 'problems/g.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'from itertools import *\nfor n in range(1,9):\n a=[i.bit_count() for i in range(1<<n)]\n bad=[]\n for l in range(1<<n):\n  dp=[0]*61\n  for x in a[l:]:\n   dp[x]=1+max(dp[x:])\n  ans=max(dp)\n  f=max(a[l:].count(x) for x in range(n+1))\n  if ans>f: bad.append((l,(1<<n)-1,ans,f))\n print(n, 'full lnis',max([max((lambda d: d)([0])) for _ in []], default=0), 'freq',max(a.count(x) for x in range(n+1)), 'bad suffixes',bad[:3])\n' \"",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,9):\n a=[i.bit_count() for i in range(1<<n)]\n bad=[]\n full_dp=[0]*61\n for x in a:\n  full_dp[x]=1+max(full_dp[x:])\n for l in range(1<<n):\n  dp=[0]*61\n  for x in a[l:]:\n   dp[x]=1+max(dp[x:])\n  ans=max(dp)\n  f=max(a[l:].count(x) for x in range(n+1))\n  if ans>f: bad.append((l,ans,f))\n print(n, 'full lnis', max(full_dp), 'freq',max(a.count(x) for x in range(n+1)), 'bad suffixes',bad[:3])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor l,r in [(15,31),(31,63),(47,63),(3,6)]:\n a=list(range(l,r+1)); p=[x.bit_count() for x in a]\n dp=[0]*61; pred=[]; best=[]\n for i,x in enumerate(p):\n  y=max(range(x,61),key=lambda z:dp[z]); dp[x]+=1 if False else 0\n  # dp[x] = 1+ max prior states >=x\n  dp[x]=1+max([0]+dp[x:])\n  pred.append(y)\n print(l,r,p,'freq',max(p.count(x) for x in set(p)),'ans',max(dp))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,10):\n a=[i.bit_count() for i in range(1<<n)]\n maxdiff=0; ex=None\n for l in range(1<<n):\n  dp=[0]*61; freq=[0]*61\n  for x in a[l:]:\n   dp[x]=1+max([0]+dp[x:]);freq[x]+=1\n  ans=max(dp); f=max(freq)\n  if ans-f>maxdiff:maxdiff=ans-f;ex=(l,ans,f)\n print(n,'max answer-freq',maxdiff,ex)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor l,r in [(15,31),(59,127),(235,511),(3,6)]:\n p=[x.bit_count() for x in range(l,r+1)]\n d=[0]*64; seq=[[] for _ in range(64)]\n for i,x in enumerate(p):\n  y=max(range(x,64),key=lambda z:d[z])\n  if d[y]+1>d[x]: d[x]=d[y]+1;seq[x]=seq[y]+[x]\n b=max(range(64),key=lambda z:d[z])\n print(l,r,d[b],seq[b],{v:p.count(v) for v in sorted(set(p))})\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,10):\n a=[i.bit_count() for i in range(1<<n)]\n bad=[];maxgap=0\n for l in range(1<<n):\n  dp=[0]*64;best=0\n  cnt=[0]*64; cross=[0]*64\n  # calculate best subsequence restricted to only adjacent levels using simple DP maintaining prior high count\n  for x in a[l:]:\n   dp[x]=1+max([0]+dp[x:]);best=max(best,dp[x])\n  pair=0\n  # brute sequence restricted levels {v,v+1}\n  for v in range(n):\n   high=0; low=0; cur=0\n   for x in a[l:]:\n    if x==v+1: high+=1\n  ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,9):\n a=[i.bit_count() for i in range(1<<n)]; bad=[]\n for l in range(1<<n):\n  dp=[0]*64; best=0\n  for r in range(l,1<<n):\n   x=a[r]; dp[x]=1+max([0]+dp[x:]); best=max(best,dp[x])\n   q=a[l:r+1]; pair=0\n   for k in range(n):\n    bal=0; mx=0; count=0\n    for y in q:\n     if y==k+1: bal+=1\n     elif y==k: bal-=1; count+=1\n     mx=max(mx,bal)\n    pair=max(pair,count+mx)\n   if best>pair: bad.append((l,r,best,pair)); break\n print(n, 'bad',bad[:1], 'total'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,9):\n a=[i.bit_count() for i in range(1<<n)]; bad=[]\n for l in range(1<<n):\n  dp=[0]*64; best=0\n  for r in range(l,1<<n):\n   x=a[r]; dp[x]=1+max([0]+dp[x:]); best=max(best,dp[x])\n   q=a[l:r+1]; pair=0\n   for h in range(n+1):\n    for lo in range(h+1):\n     bal=0; mx=0; count=0\n     for y in q:\n      if y==h: bal+=1\n      elif y==lo: bal-=1; count+=1\n      mx=max(mx,bal)\n     pair=max(pair,count+mx)\n   if best>pair: bad.append((l,r,best,pair)); break",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nl,r=15,32\np=[x.bit_count() for x in range(l,r+1)]\nd=[0]*64; path=[[] for _ in range(64)]\nfor i,x in enumerate(p):\n y=max(range(x,64),key=lambda z:d[z]);\n if d[y]+1>d[x]: d[x]=d[y]+1;path[x]=path[y]+[x]\nb=max(range(64),key=lambda z:d[z])\nprint(p,d[b],path[b])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor b in range(1,5):\n seq=[x.bit_count() for x in range(1<<b)]\n W=[[0]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[0]*(b+1); started=False\n  for x in seq:\n   if not started and x==a: started=True; d[x]=1\n   elif started and x<=a:\n    d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1): W[a][s]=d[s]\n print('b',b,'seq',seq)\n for row in W: print(row)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor b in range(2,8):\n seq=[x.bit_count() for x in range(1<<b)]; INF=-10**9\n W=[[INF]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[INF]*(b+1);started=False\n  for x in seq:\n   if not started and x==a: started=True;d[x]=0 # start selected gives base included later\n   elif started and x<=a:\n    d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1): W[a][s]=d[s]+1 if d[s]>INF//2 else INF\n mono=True;bad=None\n # Maxima over rows a for each col s, d arbitrary added b",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor b in range(1,9):\n seq=[x.bit_count() for x in range(1<<b)]; NEG=-10**9\n W=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[NEG]*(b+1); started=False\n  for x in seq:\n   if not started and x==a: started=True; d[x]=1\n   elif started and x<=a: d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1): W[a][s]=d[s]\n # test Monge both orientations for valid quadrangles fully valid (a rows, s cols; need a>=s)\n m1=m2=True\n for a1 in range(b+1):\n  for a2 in range(a",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,11):\n a=[i.bit_count() for i in range(1<<n)]; bad=None\n for l in range(1<<n):\n  dp=[0]*64; freq=[0]*64; prefix=[0]*64\n  best=0\n  for x in a[l:]:\n   dp[x]=1+max([0]+dp[x:]);best=max(best,dp[x])\n  for rr in range(l,1<<n):\n   # easier recompute adjacent pair for [l,rr]\n   if rr==l: hi=0\n   # incremental not\n  # all intervals too much n=10 ~1m; do it anyway\n  for r in range(l,1<<n):\n   q=a[l:r+1]; pair=0\n   for k in range(n):\n    bal=0; mx=0; count=0\n",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor n in range(1,10):\n a=[i.bit_count() for i in range(1<<n)]; mx=0; ex=None\n for l in range(1<<n):\n  dp=[0]*64; mask=[0]*64\n  for r in range(l,1<<n):\n   x=a[r]; old=[(dp[y],mask[y]) for y in range(x,64)]\n   best=max(old,key=lambda z:z[0])\n   val=best[0]+1; m=best[1]|(1<<x)\n   if val>=dp[x]: dp[x]=val;mask[x]=m\n   b=max(range(64),key=lambda z:dp[z]); d=dp[b]; mm=mask[b]\n   kinds=mm.bit_count()\n   if kinds>mx: mx=kinds;ex=(l,r,d,mm)\n print(n,mx,ex)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor b in [5,6,7]:\n seq=[x.bit_count() for x in range(1<<b)];NEG=-10**9\n W=[]\n for a in range(b+1):\n  d=[NEG]*(b+1);start=False\n  for x in seq:\n   if not start and x==a: start=True;d[x]=1\n   elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n  W.append([d[s] if s<=a else 0 for s in range(b+1)])\n print('b',b)\n for a,row in enumerate(W): print(a,row)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nb=4;seq=[x.bit_count() for x in range(1<<b)];N=-100\nW=[[N]*(b+1) for _ in range(b+1)]\nfor a in range(b+1):\n d=[N]*(b+1);start=False\n for x in seq:\n  if not start and x==a:start=True;d[x]=1\n  elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n for s in range(a+1):W[a][s]=d[s]\nfor a1 in range(b+1):\n for a2 in range(a1+1,b+1):\n  for s1 in range(b+1):\n   for s2 in range(s1+1,b+1):\n    if min(W[a1][s1],W[a1][s2],W[a2][s1],W[a2][s2])<=N:continue\n    lhs=W[a1][s1]+W[a2][s2]",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor b in range(1,8):\n seq=[x.bit_count() for x in range(1<<b)];N=-10**9\n W=[[N]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[N]*(b+1);started=False\n  for x in seq:\n   if not started and x==a: started=True;d[x]=1\n   elif started and x<=a:d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1):W[a][s]=d[s]\n first=None;second=None\n for a1 in range(b+1):\n  for a2 in range(a1+1,b+1):\n   for s1 in range(b+1):\n    for s2 in range(s1+1,b+1):\n     v=[W[a1][s1],W[a1][s2]",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nINF=-10**9\nW=[[[INF]*61 for _ in range(61)] for _ in range(13)]\nW[0][0][0]=1\nfor b in range(1,13):\n p=W[b-1];q=W[b]\n for a in range(b+1):\n  for s in range(b+1):\n   if a<b and s<b:q[a][s]=max(q[a][s],p[a][s])\n   if a and s:q[a][s]=max(q[a][s],p[a-1][s-1])\n   # cross from first half start a to p>= qstart=q+1 then second half end s\n   for qq in range(b):\n    if s-1<0 or s-1>qq: continue\n    best=max((p[a][pp] for pp in range(qq+1,b)),default=INF) if a<b else INF\n    ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\n# direct W b=7\nb=7;seq=[x.bit_count() for x in range(1<<b)];N=-10**9\nW=[[N]*(b+1) for _ in range(b+1)]\nfor a in range(b+1):\n d=[N]*(b+1);start=False\n for x in seq:\n  if not start and x==a:start=True;d[x]=1\n  elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n for s in range(a+1):W[a][s]=d[s]\nfor v in ([0, -100,-0,-7,-100,-100,-100,-100],):\n for s in range(b+1):\n  cand=[a for a in range(s,b+1) if W[a][s]>N//2]\n  print(s,[(a,v[a]+W[a][s]) for a in cand],max(cand,key=la",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nb=7;seq=[x.bit_count() for x in range(1<<b)];N=-10**9\nW=[[N]*(b+1) for _ in range(b+1)]\nfor a in range(b+1):\n d=[N]*(b+1);start=False\n for x in seq:\n  if not start and x==a:start=True;d[x]=1\n  elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n for s in range(a+1):W[a][s]=d[s]\nfor _ in range(100000):\n v=[random.randrange(-100,100) for _ in range(b+1)]\n args=[]\n for s in range(b+1):\n  cand=[a for a in range(s,b+1) if W[a][s]>N//2]\n  args.append(max(cand,",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nfor b in range(1,16):\n seq=[x.bit_count() for x in range(1<<b)];N=-10**9\n W=[[N]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[N]*(b+1);start=False\n  for x in seq:\n   if not start and x==a:start=True;d[x]=1\n   elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1):W[a][s]=d[s]\n bad=None\n for _ in range(10000):\n  vals=sorted([random.randrange(1000) for _ in range(b+1)],reverse=True)\n  args=[]\n  for s in range(b+1):\n   cand=[a fo",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nfor b in range(1,9):\n seq=[x.bit_count() for x in range(1<<b)];N=-10**9\n W=[[N]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[N]*(b+1);start=False\n  for x in seq:\n   if not start and x==a:start=True;d[x]=1\n   elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1):W[a][s]=d[s]\n bad=None; inc=False;dec=False\n for _ in range(10000):\n  vals=sorted([random.randrange(1000) for _ in range(b+1)],reverse=True)\n  args=[]\n  for s in range",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom math import inf\nNEG=-10**9\nW=[[[NEG]*61 for _ in range(61)] for _ in range(10)]\nW[0][0][0]=1\nfor b in range(1,10):\n p=W[b-1];q=W[b]\n for a in range(b+1):\n  for s in range(b+1):\n   if a<b and s<b:q[a][s]=max(q[a][s],p[a][s])\n   if a>=1 and s>=1:q[a][s]=max(q[a][s],p[a-1][s-1])\n   if a<b and s>=1:\n    for mid in range(b-1): # prior last p>= mid+1; next first mid+1\n     if p[a][mid+1]>NEG//2 and p[mid][s-1]>NEG//2:\n      q[a][s]=max(q[a][s],p[a][mid+1]+p[mid][s-",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nW=[[[NEG]*61 for _ in range(61)] for _ in range(10)]\nW[0][0][0]=1\nprint(W[0][0][0], W[0][0][0]>NEG//2)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nW=[[[NEG]*61 for _ in range(61)] for _ in range(10)];W[0][0][0]=1\ndef apply(dp,b,c):\n v=[]\n for a in range(b+1):v.append(max([0]+[dp[x] for x in range(c+a,61)]))\n print('v',v,'w',W[b][0][0])\n out=dp[:];ans=[0]*(b+1)\n def rec(l,r,optl,optr):\n  if l>r:return\n  mid=(l+r)//2;bestv=NEG;besta=-1\n  for a in range(max(mid,optl),optr+1):\n   val=W[b][a][mid]\n   print('scan',a,mid,val,v[a],val>NEG//2)\n   if val>NEG//2 and v[a]+val>bestv:bestv=v[a]+val;besta=a\n  an",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nW=[[[NEG]*61 for _ in range(61)] for _ in range(3)];W[0][0][0]=1\n\ndef apply(dp,b,c):\n v=[max([0]+[dp[x] for x in range(c+a,61)]) for a in range(b+1)]\n out=dp[:]; ans=[0]*(b+1)\n def rec(l,r,optl,optr):\n  if l>r:return\n  mid=(l+r)//2;bestv=NEG;besta=-1\n  for a in range(max(mid,optl),optr+1):\n   val=W[b][a][mid]\n   if val>NEG//2 and v[a]+val>bestv:bestv=v[a]+val;besta=a\n  ans[mid]=bestv\n  rec(l,mid-1,optl,besta);rec(mid+1,r,besta,optr)\n rec(0,b,0,b)\n for s",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import combinations_with_replacement\nfor b in range(1,8):\n seq=[x.bit_count() for x in range(1<<b)];N=-10**9\n W=[[N]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  d=[N]*(b+1);start=False\n  for x in seq:\n   if not start and x==a:start=True;d[x]=1\n   elif start and x<=a:d[x]=max(d[x],1+max(d[x:]))\n  for s in range(a+1):W[a][s]=d[s]\n bad=[]\n # all nonincreasing sequence values among 0..3, offset irrelevant\n for tup in combinations_with_replacement",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nW=[[[1]]]\nfor b in range(1,10):\n p=W[b-1]; q=[ [NEG]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  for s in range(b+1):\n   if a<b and s<b:q[a][s]=max(q[a][s],p[a][s])\n   if a>0 and s>0:q[a][s]=max(q[a][s],p[a-1][s-1])\n   if a<b and s>0:\n    for mid in range(b-1): # start second at mid+1, first end >=mid+1\n     left=max(p[a][end] for end in range(mid+1,b))\n     if s-1<=mid and p[mid][s-1]>NEG//2 and left>NEG//2:\n      q[a][s]=max(q[a][s],left+p[mid]",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nW=[[[1]]]\nfor b in range(1,10):\n p=W[b-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b+1):\n  for s in range(b+1):\n   if a<b and s<b:q[a][s]=max(q[a][s],p[a][s])\n   if a and s:q[a][s]=max(q[a][s],p[a-1][s-1])\n   if a<b and s:\n    for mid in range(b-1):\n     left=max(p[a][end] for end in range(mid+1,b))\n     if s-1<=mid and p[mid][s-1]>NEG//2 and left>NEG//2:q[a][s]=max(q[a][s],left+p[mid][s-1])\n W.append(q)\ndef apply(dp,b,c):\n suffix=[NEG]*62\n f",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nN=-10**12\nW=[[[1]]]\nfor b in range(1,61):\n p=W[-1];q=[[N]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  # direct half copies\n  for s in range(b):q[a][s]=p[a][s]\n  # suffix max by first-half endpoint threshold\n  best=N\n  left=[N]*b\n  for t in range(b-1,-1,-1):\n   left[t]=best\n   best=max(best,p[a][t])\n  for s in range(1,b+1):\n   for start2 in range(s-1,b):\n    if left[start2]>N//2 and p[start2][s-1]>N//2:\n     q[a][s]=max(q[a][s],left[start2]+p[sta",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -l .sample_bins'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -l .sample_bins'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"pgrep -af 'g\\\\+\\\\+|cc1plus' || true\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/d.cpp -o .sample_bins/d'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'mkdir -p .sample_bins && for f in a b c d e f g; do g++ -std=c++20 -O2 -pipe \"solutions/$f.cpp\" -o \".sample_bins/$f\" || exit 1; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/f.cpp -o .sample_bins/f'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/e.cpp -o .sample_bins/e'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 -pipe solutions/g.cpp -o .sample_bins/g'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/a <<'EOF'\nlive\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/a <<'EOF'\nfemur\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/a <<'EOF'\nchimpanzee\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/d <<'EOF'\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/d <<'EOF'\n1 7 67\n677677677766666 0\n777666777\n20 12 24 67 67 67 67\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/b <<'EOF'\n5\nsnuke\nsnake\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/c <<'EOF'\n10\n1 1 1 3 2 5 4 3 6 5\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/c <<'EOF'\n10\n11 9 1 3 17 19 10 19 17 3\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/d <<'EOF'\n20 20 30\n605776135 133105105\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/f <<'EOF'\n4 19\n2 3 1 1\n3 4 4 10\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/g <<'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/e <<'EOF'\n6 7\n3 6 5 2 4 1\n4 5\n2 3\n3 5\n4 6\n3 4\n1 6\n3 5\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/e <<'EOF'\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/c <<'EOF'\n5\n1 2 1 2 3\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/b <<'EOF'\n5\nyiwiy\n*****\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/f <<'EOF'\n20 676767\n60932 508200 22883 481150 426836 554098 276223 307959 133025 573906 17711 413230 274246 500277 524959 477728 546547 43099 324227 660187\n552697 293978 246000 159233 213736 628198 394200 194076 618720 453035 615100 331522 669419 180856 530693 399531 223149 159334 102107 598633\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/f <<'EOF'\n6 67\n1 6 9 2 3 1\n1 10 3 7 2 2\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"./.sample_bins/b <<'EOF'\n8\nchokudai\n**o*u*ai\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 -pipe solutions/g.cpp -o .sample_bins/g && ./.sample_bins/g <<'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\n# Reuse exact block summary construction, compare range summaries against direct DP on a short interval.\nNEG=-10**15;W=[[[1]]]\nfor b in range(1,25):\n p=W[-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  for s in range(b):q[a][s]=p[a][s]\n  suffix=NEG\n  for first in range(b-2,-1,-1):\n   suffix=max(suffix,p[a][first+1])\n   if suffix\"'!=NEG:\n    for s in range(1,first+2):\n     v=p[first][s-1]\n     if v!=NEG:q[a][s]=max(q[a][s],suffix+v)\n for a in range(1,",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**15;W=[[[1]]]\nfor b in range(1,18):\n p=W[-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  for s in range(b):q[a][s]=p[a][s]\n  suffix=NEG\n  for first in range(b-2,-1,-1):\n   suffix=max(suffix,p[a][first+1])\n   if suffix\"'!=NEG:\n    for s in range(1,first+2):\n     v=p[first][s-1]\n     if v!=NEG:q[a][s]=max(q[a][s],suffix+v)\n for a in range(1,b+1):\n  for s in range(1,b+1):q[a][s]=max(q[a][s],p[a-1][s-1])\n W.append(q)\n if b<=12:\n  seq=[x.bit_count",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**15;W=[[[1]]]\nfor b in range(1,20):\n p=W[-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  for s in range(b):q[a][s]=p[a][s]\n  z=NEG\n  for t in range(b-2,-1,-1):\n   z=max(z,p[a][t+1])\n   if z\"'!=NEG:\n    for s in range(1,t+2):\n     if p[t][s-1]!=NEG:q[a][s]=max(q[a][s],z+p[t][s-1])\n for a in range(1,b+1):\n  for s in range(1,b+1):q[a][s]=max(q[a][s],p[a-1][s-1])\n W.append(q)\ndef apply(dp,b,c):\n suf=[NEG]*62\n for i in range(60,-1,-1):suf[i]=max(d",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndp=[0]*61\nfor x in range(100,10001):\n k=x.bit_count();dp[k]=1+max(dp[k:])\nprint(max(dp),[(i,x) for i,x in enumerate(dp) if x])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\n# simple block summary only, validate exact dp with direct and print final\nNEG=-10**15;W=[[[1]]]\nfor b in range(1,20):\n p=W[-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  for s in range(b):q[a][s]=p[a][s]\n  z=NEG\n  for t in range(b-2,-1,-1):\n   z=max(z,p[a][t+1])\n   if z\"'!=NEG:\n    for s in range(1,t+2):\n     if p[t][s-1]!=NEG:q[a][s]=max(q[a][s],z+p[t][s-1])\n for a in range(1,b+1):\n  for s in range(1,b+1):q[a][s]=max(q[a][s],p[a-1][s-1])\n W.append",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nL,R=100,10000;pos=L;blocks=[];covered=[]\nwhile pos<=R:\n rem=R-pos+1;b=(pos&-pos).bit_length()-1\n while pos%(1<<(b+1))==0 and (1<<(b+1))<=rem:b+=1\n blocks.append((pos,b,pos+(1<<b)-1));covered.extend(range(pos,pos+(1<<b)));pos+=1<<b\nprint(len(blocks),blocks[:15],blocks[-5:]);print(covered[0],covered[-1],len(covered),len(set(covered)),covered==list(range(L,R+1)))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 -pipe solutions/g.cpp -o .sample_bins/g && ./.sample_bins/g <<'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom random import randrange\nNEG=-10**12\nW=[[[1]]]\nfor b in range(1,9):\n p=W[-1];q=[[NEG]*(b+1) for _ in range(b+1)]\n for a in range(b):\n  for s in range(b):q[a][s]=p[a][s]\n  z=NEG\n  for t in range(b-2,-1,-1):\n   z=max(z,p[a][t+1])\n   if z\"'!=NEG:\n    for s in range(1,t+2):\n     if p[t][s-1]!=NEG:q[a][s]=max(q[a][s],z+p[t][s-1])\n for a in range(1,b+1):\n  for s in range(1,b+1):q[a][s]=max(q[a][s],p[a-1][s-1])\n W.append(q)\ndef smawk(rows,cols,val,opt):\n red=[]\n for ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c \\\"from pathlib import Path; d=Path('.sample_bins'); [p.unlink() for p in d.iterdir() if p.is_file()]; d.rmdir()\\\"\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git status --short'",
+   "exit_code": 0
+  }
+ ]
+}

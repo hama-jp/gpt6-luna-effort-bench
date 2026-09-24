@@ -1,0 +1,16 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -la && rg --files problems'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md problems/b.md problems/c.md problems/d.md problems/e.md problems/f.md problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"mkdir -p solutions && cat > solutions/a.py <<'EOF'\ns=input().strip()\nprint(s+('r' if s[-1]=='e' else 'er'))\nEOF\ncat > solutions/b.py <<'EOF'\nimport sys\nit=iter(sys.stdin.read().split())\nn=int(next(it)); s=next(it); t=next(it)\nprint('Yes' if all(y=='*' or x==y for x,y in zip(s,t)) else 'No')\nEOF\ncat > solutions/c.py <<'EOF'\nimport sys\nit=iter(map(int,sys.stdin.buffer.read().split()))\nn=next(it); a=[next(it) for _ in range(n)]\ntop=[0,0,0]\nout=[]\nfor x in a:\n    if x>top[0]: top=[x,t",
+   "exit_code": 0
+  }
+ ]
+}

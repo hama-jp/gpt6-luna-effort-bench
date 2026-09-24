@@ -1,0 +1,8 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'cat report.md'",
+   "exit_code": 0
+  }
+ ]
+}

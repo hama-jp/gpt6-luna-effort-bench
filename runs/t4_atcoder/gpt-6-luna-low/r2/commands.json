@@ -1,0 +1,32 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -la && rg --files problems solutions 2>/dev/null'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md problems/b.md problems/c.md problems/d.md problems/e.md problems/f.md problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc ''",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc ''",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'mkdir -p solutions && python3 solutions/a.py << EOF\nlive\nEOF\npython3 solutions/b.py << EOF\n8\nchokudai\n**o*u*ai\nEOF\npython3 solutions/c.py << EOF\n5\n1 2 1 2 3\nEOF\ng++ -std=c++20 -O2 solutions/d.cpp -o .tmp/d && .tmp/d << EOF\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\ng++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e && .tmp/e << EOF\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\ng++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f && .tmp/f << EOF\n4 19\n2 3 1 1\n3 4 4 10\nEOF'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 solutions/c.py << EOF\n5\n1 2 1 2 3\nEOF\ng++ -std=c++20 -O2 solutions/d.cpp -o .tmp/d && .tmp/d << EOF\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\ng++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f && .tmp/f << EOF\n4 19\n2 3 1 1\n3 4 4 10\nEOF'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e && .tmp/e << EOF\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\npython3 solutions/a.py << EOF\nlive\nEOF\npython3 solutions/b.py << EOF\n5\nsnuke\nsnake\nEOF\npython3 solutions/c.py << EOF\n5\n1 2 1 2 3\nEOF'",
+   "exit_code": 0
+  }
+ ]
+}

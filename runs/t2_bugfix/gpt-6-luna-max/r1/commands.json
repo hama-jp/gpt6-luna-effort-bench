@@ -1,0 +1,76 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/models.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/cli.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/__init__.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/report.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/importer.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/__main__.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/dedupe.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat tests/test_basic.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/categorize.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --check && git diff'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '1,240p' ledgerlite/dedupe.py && sed -n '1,260p' ledgerlite/report.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '1,240p' ledgerlite/importer.py && sed -n '1,220p' ledgerlite/categorize.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest && git diff --check && git status --short'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'from pathlib import Path; import shutil; [shutil.rmtree(p) for p in (Path(\\\"ledgerlite/__pycache__\\\"), Path(\\\"tests/__pycache__\\\")) if p.exists()]' && PYTHONDONTWRITEBYTECODE=1 python3 -m unittest && git diff --check && git status --short\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'PYTHONDONTWRITEBYTECODE=1 python3 -m unittest && git diff --check && git status --short'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'rg -n \"def (to_money|parse_banka_date|parse_number|categorize|normalise|dedupe|in_month|monthly_summary)|class .*RegressionTest\" ledgerlite tests/test_regressions.py'",
+   "exit_code": 0
+  }
+ ]
+}

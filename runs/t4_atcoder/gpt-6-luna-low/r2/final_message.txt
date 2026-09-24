@@ -1,0 +1,9 @@
+解答ファイルを `solutions/` に置き、サンプル入出力で確認しました。
+
+- A — [a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-low-r2/solutions/a.py)：サンプル1で `liver` を確認。
+- B — [b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-low-r2/solutions/b.py)：サンプル1で `Yes`、サンプル2で `No` を確認。
+- C — [c.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-low-r2/solutions/c.py)：サンプル1で `1, 1, 2` を確認。
+- E — [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-low-r2/solutions/e.cpp)：サンプル1で `3 4 2 5 1` を確認。
+- F — [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-low-r2/solutions/f.cpp)：サンプル1で `467` を確認。
+
+DとGは解答を用意できていません。

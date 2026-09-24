@@ -1,0 +1,15 @@
+`solutions/` に解答を置きました。D は未解答です。**G の解答はサンプルと一致しなかったため、提出対象から外しました。**
+
+- A: `solutions/a.py`
+- B: `solutions/b.py`
+- C: `solutions/c.cpp`
+- E: `solutions/e.cpp`
+- F: `solutions/f.cpp`
+
+入出力例で確認した結果:
+
+- A: `live` → `liver`（一致）
+- B: `chokudai` / `**o*u*ai` → `Yes`（一致）
+- C: 解答ファイルを作成しましたが、例は未確認です。
+- E: 例1 → `3 4 2 5 1`（一致）
+- F: 例1 → `467`（一致）

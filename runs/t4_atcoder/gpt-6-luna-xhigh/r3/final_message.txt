@@ -1,0 +1,9 @@
+解答を `solutions/` に置き、C++の5問はすべてコンパイルできました。サンプルの実行結果は次のとおりです。
+
+- A: [a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/a.py) — サンプル3件すべて一致。
+- B: [b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/b.py) — サンプル3件すべて一致。
+- C: [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/c.cpp) — サンプル3件すべて一致。
+- D: [d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/d.cpp) — サンプル3件すべて一致。
+- E: [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/e.cpp) — サンプル2件すべて一致。
+- F: [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/f.cpp) — サンプル3件すべて一致。
+- G: [g.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r3/solutions/g.cpp) — サンプル5ケースすべて一致。

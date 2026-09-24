@@ -1,0 +1,103 @@
+{
+  "passed": 16,
+  "total": 16,
+  "extra_keys": [],
+  "detail": {
+    "q01": {
+      "got": "21120",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q02": {
+      "got": "1796",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q03": {
+      "got": "2725",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q04": {
+      "got": "12615",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q05": {
+      "got": "1884.8",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q06": {
+      "got": "51709.2",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q07": {
+      "got": "3228",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q08": {
+      "got": "3430",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q09": {
+      "got": "6.7",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q10": {
+      "got": "Q3",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q11": {
+      "got": "2862",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q12": {
+      "got": "103.4",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q13": {
+      "got": "記載なし",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q14": {
+      "got": "30",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q15": {
+      "got": "3602",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q16": {
+      "got": "285",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "passed": 9,
+  "total": 16,
+  "extra_keys": [],
+  "detail": {
+    "q01": {
+      "got": "21120",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q02": {
+      "got": "1796",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q03": {
+      "got": "2725",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q04": {
+      "got": "11280",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q05": {
+      "got": "1884800.0",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q06": {
+      "got": "73570.0",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q07": {
+      "got": "3710",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q08": {
+      "got": "4097",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q09": {
+      "got": "6.7",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q10": {
+      "got": "Q3",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q11": {
+      "got": "2862",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q12": {
+      "got": "147.1",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    },
+    "q13": {
+      "got": "記載なし",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q14": {
+      "got": "30",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q15": {
+      "got": "3602",
+      "ok": true,
+      "value_ok_ignoring_format": true,
+      "trap": false
+    },
+    "q16": {
+      "got": "1125",
+      "ok": false,
+      "value_ok_ignoring_format": false,
+      "trap": false
+    }
+  }
+}

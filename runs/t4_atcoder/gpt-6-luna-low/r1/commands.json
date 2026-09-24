@@ -1,0 +1,16 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'rg --files problems'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'mkdir -p solutions && pwd'",
+   "exit_code": 0
+  }
+ ]
+}

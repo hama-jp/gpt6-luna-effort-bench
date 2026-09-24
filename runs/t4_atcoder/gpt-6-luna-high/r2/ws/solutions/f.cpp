@@ -1,0 +1,4 @@
+#include <bits/stdc++.h>
+using namespace std;
+using int64=long long;
+int main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;int64 mod;if(!(cin>>n>>mod))return 0;vector<int64>a(n),b(n);for(auto&x:a)cin>>x;for(auto&x:b)cin>>x;int len=2*n-1;vector<int64> su(len),wu(len),sv(len),wv(len);for(int r=0;r<n;r++)for(int c=0;c<n;c++){int64 w=(a[r]*b[c])%mod;int u=r+c,v=r-c+n-1;su[u]+=w;wu[u]+=w*u;sv[v]+=w;wv[v]+=w*v;}auto prep=[&](vector<int64>&s,vector<int64>&w){for(int i=1;i<len;i++){s[i]+=s[i-1];w[i]+=w[i-1];}};prep(su,wu);prep(sv,wv);auto absSum=[&](int x,const vector<int64>&s,const vector<int64>&w){int64 ls=0,lw=0;if(x>0){ls=s[x-1];lw=w[x-1];}int64 ts=s[len-1],tw=w[len-1];return (int64)x*ls-lw+(tw-lw)-(int64)x*(ts-ls);};int64 ans=0;for(int r=0;r<n;r++)for(int c=0;c<n;c++){int u=r+c,v=r-c+n-1;int64 f=(absSum(u,su,wu)+absSum(v,sv,wv))/2;ans^=(f+(int64)r*n+c);}cout<<ans<<'\n';}

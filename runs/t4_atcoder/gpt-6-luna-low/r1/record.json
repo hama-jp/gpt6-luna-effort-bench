@@ -1,0 +1,29 @@
+{
+  "task": "t4_atcoder",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "rep": 1,
+  "wall_s": 49.2,
+  "returncode": 0,
+  "timed_out": false,
+  "requests": 6,
+  "max_request_input": 19868,
+  "long_prompt_requests": 0,
+  "commands": 3,
+  "web_searches": 0,
+  "usage": {
+    "input_tokens": 101601,
+    "cached_input_tokens": 88576,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1550,
+    "reasoning_output_tokens": 0,
+    "total_tokens": 103151
+  },
+  "api_cost_usd": 0.00296,
+  "cost_complete": true,
+  "score": 2,
+  "total": 7,
+  "auth_synced_back": false,
+  "codex_version": "codex-cli 0.156.1",
+  "started": "2026-09-24T14:47:02"
+}

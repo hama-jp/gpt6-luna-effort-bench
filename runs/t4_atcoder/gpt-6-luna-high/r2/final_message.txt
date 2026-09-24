@@ -1,0 +1,9 @@
+`solutions/` に A〜F の解答を置きました。G は正しい解法を確認できなかったため、提出していません。
+
+- A — [a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/a.py)：掲載サンプル3件すべて一致。
+- B — [b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/b.py)：掲載サンプル3件すべて一致。
+- C — [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/c.cpp)：掲載サンプル3件すべて一致。
+- D — [d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/d.cpp)：掲載サンプル3件すべて一致。
+- E — [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/e.cpp)：掲載サンプル2件すべて一致。
+- F — [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r2/solutions/f.cpp)：掲載サンプル3件すべて一致。
+- G — 解答ファイルなし。

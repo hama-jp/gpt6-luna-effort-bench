@@ -1,0 +1,9 @@
+A〜Gすべての解答を置き、各問題の入出力例で確認しました。
+
+- A: [solutions/a.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/a.py) — 例1〜3はすべて一致。
+- B: [solutions/b.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/b.py) — 出力 `Yes, No, Yes` で一致。
+- C: [solutions/c.py](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/c.py) — 例1〜3はすべて一致。
+- D: [solutions/d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/d.cpp) — 出力 `4, 1, 22` で一致。
+- E: [solutions/e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/e.cpp) — 例1・2は一致。
+- F: [solutions/f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/f.cpp) — 出力 `467, 1021, 764668547` で一致。
+- G: [solutions/g.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r2/solutions/g.cpp) — 出力 `3, 1, 6, 1636985, 11375123021856567` で一致。

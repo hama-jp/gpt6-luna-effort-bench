@@ -1,0 +1,57 @@
+{
+  "problems": {
+    "a": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 13,
+      "total": 13,
+      "max_time_s": 0.08
+    },
+    "b": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 21,
+      "total": 21,
+      "max_time_s": 0.08
+    },
+    "c": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 26,
+      "total": 26,
+      "max_time_s": 0.17
+    },
+    "d": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 47,
+      "total": 47,
+      "max_time_s": 0.11
+    },
+    "e": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 35,
+      "total": 35,
+      "max_time_s": 0.36
+    },
+    "f": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 25,
+      "total": 25,
+      "max_time_s": 0.05
+    },
+    "g": {
+      "lang": "cpp",
+      "verdict": "AC",
+      "passed": 44,
+      "total": 44,
+      "max_time_s": 0.12
+    }
+  },
+  "passed": 7,
+  "total": 7,
+  "points": 2625,
+  "ac": "ABCDEFG"
+}

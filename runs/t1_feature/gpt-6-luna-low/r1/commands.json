@@ -1,0 +1,48 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/models.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat tests/test_basic.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/cli.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/categorize.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/importer.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/__init__.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/report.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat ledgerlite/dedupe.py'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'find .. -name AGENTS.md -print'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  }
+ ]
+}

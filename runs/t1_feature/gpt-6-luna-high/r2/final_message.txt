@@ -1,0 +1,5 @@
+ledgerlite に多通貨対応を追加しました。通貨列付き・従来形式の CSV 読み込み、為替レートの読み込みと7日以内の過去レートによる換算、通貨を考慮した重複判定、レポート表示、CLI の `--base` / `--rates` を実装しています。
+
+主な変更は [fx.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-high-r2/ledgerlite/fx.py)、[importer.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-high-r2/ledgerlite/importer.py)、[cli.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-high-r2/ledgerlite/cli.py) と [test_multicurrency.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-high-r2/tests/test_multicurrency.py) です。
+
+`python3 -m unittest` は 13 件すべて成功し、`git diff --check` も通りました。

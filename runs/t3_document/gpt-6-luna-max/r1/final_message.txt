@@ -1,0 +1,3 @@
+`answers.json` を作成し、JSON形式と16個のキーを確認しました。
+
+[answers.json](~/luna-bench/ws/runs-t3_document-gpt-6-luna-max-r1/answers.json)

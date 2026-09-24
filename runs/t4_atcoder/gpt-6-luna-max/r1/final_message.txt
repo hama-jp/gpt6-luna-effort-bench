@@ -1,0 +1,9 @@
+`solutions/` に7問すべての解答を置き、C++20でコンパイルして入出力例を確認しました。各例で期待出力と一致しています。
+
+- A: [a.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/a.cpp) — `liver`, `femurer`, `chimpanzeer`
+- B: [b.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/b.cpp) — `Yes`, `No`, `Yes`
+- C: [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/c.cpp) — 3例すべて一致
+- D: [d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/d.cpp) — `4`, `1`, `22`
+- E: [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/e.cpp) — 2例すべて一致
+- F: [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/f.cpp) — `467`, `1021`, `764668547`
+- G: [g.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r1/solutions/g.cpp) — `3`, `1`, `6`, `1636985`, `11375123021856567`

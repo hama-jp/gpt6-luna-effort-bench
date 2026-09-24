@@ -1,0 +1,12 @@
+仕様との食い違いを修正し、回帰テストを追加しました。
+
+- [importer.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/importer.py:29)：`banka` の日付を仕様どおり `DD/MM/YYYY` として解釈し、3月4日が4月に入る問題を修正。
+- [categorize.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/categorize.py:53)：カテゴリルールを優先度の高い順に評価し、同順位ではファイル内の先行ルールを優先。
+- [dedupe.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/dedupe.py:24)：説明文の空白を正規化し、同一ファイル内の購入は残しつつ、ファイル間の重複を仕様どおりの件数に整理。
+- [report.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/report.py:31)：月末の日付を月次レポートに含めるよう修正。
+- [report.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/report.py:37)：返金をカテゴリの支出合計に反映し、上位店舗の金額も返金込みで `Decimal` として集計。
+- [importer.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/importer.py:42)：桁区切りカンマを複数処理し、不正な区切りや有限でない金額を拒否。
+- [models.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/ledgerlite/models.py:11)：浮動小数点入力でもセント単位の半端切り上げになるよう修正。
+- 回帰テストを [test_regressions.py](~/luna-bench/ws/runs-t2_bugfix-gpt-6-luna-max-r1/tests/test_regressions.py:1) に追加。
+
+`python3 -m unittest` は20件すべて成功しました。

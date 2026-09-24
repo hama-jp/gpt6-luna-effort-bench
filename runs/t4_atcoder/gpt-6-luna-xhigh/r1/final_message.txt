@@ -1,0 +1,9 @@
+7問すべて解答を `solutions/` に置き、C++20でコンパイルして入出力例を確認しました。
+
+- A — [a.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/a.cpp)：入力例1〜3すべて一致
+- B — [b.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/b.cpp)：入力例1〜3すべて一致
+- C — [c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/c.cpp)：入力例1〜3すべて一致
+- D — [d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/d.cpp)：入力例1〜3すべて一致
+- E — [e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/e.cpp)：入力例1〜2すべて一致
+- F — [f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/f.cpp)：入力例1〜3すべて一致
+- G — [g.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-xhigh-r1/solutions/g.cpp)：入力例と一致。小区間2,500件も全列挙DPと一致しました。

@@ -1,0 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
+using int64=long long;
+struct Pref{vector<int64>s, sx;int lo;int64 query(int x)const{int p=x-lo;if(p<0)return 0;if(p>=(int)s.size()-1)p=s.size()-2;return s[p+1];}int64 queryx(int x)const{int p=x-lo;if(p<0)return 0;if(p>=(int)sx.size()-1)p=sx.size()-2;return sx[p+1];}};
+int main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;int64 mod;cin>>n>>mod;vector<int64>a(n),b(n);for(auto&x:a)cin>>x;for(auto&x:b)cin>>x;int U=2*n-1,V=2*n-1;vector<int64>hu(U),huX(U),hv(V),hvX(V);int64 total=0,sumU=0,sumV=0;for(int i=0;i<n;i++)for(int j=0;j<n;j++){int64 w=(a[i]*b[j])%mod;int u=i+j,v=i-j+n-1;hu[u]+=w;huX[u]+=w*u;hv[v]+=w;hvX[v]+=w*v;total+=w;sumU+=w*u;sumV+=w*v;}vector<int64>pu(U+1),puX(U+1),pv(V+1),pvX(V+1);for(int i=0;i<U;i++){pu[i+1]=pu[i]+hu[i];puX[i+1]=puX[i]+huX[i];pv[i+1]=pv[i]+hv[i];pvX[i+1]=pvX[i]+hvX[i];}long long ans=0;for(int i=0;i<n;i++)for(int j=0;j<n;j++){int u=i+j,v=i-j+n-1;int64 lu=pu[u+1], lux=puX[u+1],lv=pv[v+1],lvx=pvX[v+1];int64 du=(int64)u*lu-lux+(sumU-lux)-(int64)u*(total-lu);int64 dv=(int64)v*lv-lvx+(sumV-lvx)-(int64)v*(total-lv);int64 f=(du+dv)/2;ans^=(f+(int64)i*n+j);}cout<<ans<<'\n';}

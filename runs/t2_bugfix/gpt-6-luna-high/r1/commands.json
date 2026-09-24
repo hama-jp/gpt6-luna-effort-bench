@@ -1,0 +1,24 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'pwd && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in ledgerlite/*.py tests/*.py; do echo \"--- $f\"; sed -n '\"'1,240p' \\\"\"'$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc 'python3 -m unittest'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git diff --check && git diff -- ledgerlite tests/test_basic.py'",
+   "exit_code": 0
+  }
+ ]
+}

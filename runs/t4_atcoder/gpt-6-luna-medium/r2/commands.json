@@ -1,0 +1,40 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g 'problems/*.md' -g 'solutions/**'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'pwd && ls -la && rg --files'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/a.py <<'EOF'\ns=input().strip()\nprint(s+('r' if s.endswith('e') else 'er'))\nEOF\ncat > solutions/b.py <<'EOF'\nimport sys\nit=iter(sys.stdin.read().split()); n=int(next(it)); s=next(it); t=next(it)\nprint('Yes' if all(y=='*' or x==y for x,y in zip(s,t)) else 'No')\nEOF\ncat > solutions/c.py <<'EOF'\nimport sys\nit=iter(map(int,sys.stdin.buffer.read().split())); n=next(it)\na=[next(it) for _ in range(n)]\nx=y=z=0; out=[]\nfor i,v in enumerate(a):\n    if v>=x: z,y,x=y,x,v\n    el",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/e.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nstruct Seg{int n; vector<int>mn,mx,imn,imx; vector<int>*a; Seg(vector<int>&v):n(v.size()),mn(4*n),mx(4*n),imn(4*n),imx(4*n),a(&v){build(1,0,n-1);} void build(int p,int l,int r){if(l==r){mn[p]=mx[p]=(*a)[l];imn[p]=imx[p]=l;return;}int m=(l+r)/2;build(p*2,l,m);build(p*2+1,m+1,r);pull(p);} void pull(int p){int x=p*2,y=x+1;if(mn[x]<=mn[y])mn[p]=mn[x],imn[p]=imn[x];else mn[p]=mn[y],imn[p]=imn[y];if(mx[x]>=mx[y]",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\np='solutions/f.cpp'\ns=open(p).read(); start=s.index('auto absSum='); end=s.index(\\\"cout<<ans\\\",start)\ns=s[:start]+'''auto makeAbs=[](const vector<long long>& c){int z=c.size();vector<long long> p(z+1),q(z+1),out(z);for(int i=0;i<z;i++){p[i+1]=p[i]+c[i];q[i+1]=q[i]+c[i]*i;}for(int x=0;x<z;x++)out[x]=(long long)x*p[x]-q[x]+(q[z]-q[x])-(long long)x*(p[z]-p[x]);return out;};auto fu=makeAbs(su),fv=makeAbs(sv);\nlong long ans=0;for(int i=0;i<n;i++)for(int j=0;j<n;j++){lo",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/d.py <<'EOF'\nimport sys,bisect\nit=iter(map(int,sys.stdin.buffer.read().split()))\nn=next(it);m=next(it);k=next(it);x=next(it);y=next(it)\na=sorted(next(it) for _ in range(n)); b=sorted((next(it)+k-1)//k for _ in range(m))\npref=[0]\nfor v in b: pref.append(pref[-1]+v)\ns=0;ans=0\nfor d in range(n+1):\n    if d: s+=a[d-1]\n    notes=max(0,(s-x+k-1)//k)\n    if notes<=y:\n        ans=max(ans,d+bisect.bisect_right(pref,y-notes)-1)\nprint(ans)\nEOF\n\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc ''",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 solutions/a.py <<'EOF'\nlive\nEOF\npython3 solutions/b.py <<'EOF'\n8\nchokudai\n**o*u*ai\nEOF\npython3 solutions/c.py <<'EOF'\n5\n1 2 1 2 3\nEOF\ng++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e && .tmp/e <<'EOF'\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\ng++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f && .tmp/f <<'EOF'\n4 19\n2 3 1 1\n3 4 4 10\nEOF\npython3 solutions/d.py <<'EOF'\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\"",
+   "exit_code": 0
+  }
+ ]
+}

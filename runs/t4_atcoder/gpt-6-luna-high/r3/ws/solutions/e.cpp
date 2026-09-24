@@ -1,0 +1,4 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Node{int mn,mx,imn,imx;};
+int main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n,m;cin>>n>>m;vector<int>a(n);for(int&x:a)cin>>x;int z=1;while(z<n)z<<=1;vector<Node>t(2*z);for(int i=0;i<z;i++)t[z+i]= i<n?Node{a[i],a[i],i,i}:Node{INT_MAX,INT_MIN,i,i};auto merge=[](Node x,Node y){Node r;r.mn=min(x.mn,y.mn);r.mx=max(x.mx,y.mx);r.imn=x.mn<=y.mn?x.imn:y.imn;r.imx=x.mx>=y.mx?x.imx:y.imx;return r;};for(int i=z-1;i;i--)t[i]=merge(t[2*i],t[2*i+1]);auto query=[&](int l,int r){Node L{INT_MAX,INT_MIN,-1,-1},R=L;for(l+=z,r+=z;l<r;l>>=1,r>>=1){if(l&1)L=merge(L,t[l++]);if(r&1)R=merge(t[--r],R);}return merge(L,R);};for(int q=0;q<m;q++){int l,r;cin>>l>>r;--l;auto v=query(l,r);int x=v.imn,y=v.imx;swap(a[x],a[y]);for(int p:{x,y}){int k=z+p;t[k]={a[p],a[p],p,p};for(k>>=1;k;k>>=1)t[k]=merge(t[2*k],t[2*k+1]);}}for(int i=0;i<n;i++)cout<<a[i]<<(i+1==n?'\n':' ');}

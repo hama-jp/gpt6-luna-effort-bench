@@ -1,0 +1,9 @@
+全7問の解答を置き、C++20でコンパイルしました。掲載されている18個の入出力例はすべて一致しました。
+
+- A: [solutions/a.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/a.cpp) — 例1〜3一致
+- B: [solutions/b.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/b.cpp) — 例1〜3一致
+- C: [solutions/c.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/c.cpp) — 例1〜3一致
+- D: [solutions/d.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/d.cpp) — 例1〜3一致
+- E: [solutions/e.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/e.cpp) — 例1〜2一致
+- F: [solutions/f.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/f.cpp) — 例1〜3一致
+- G: [solutions/g.cpp](~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-max-r3/solutions/g.cpp) — 例1の全ケース一致

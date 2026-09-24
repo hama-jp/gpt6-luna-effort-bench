@@ -1,0 +1,144 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -la && rg --files problems solutions 2>/dev/null'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/c.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/b.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/d.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/f.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/e.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -la solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/a.py <<'EOF'\nimport sys\ns = sys.stdin.readline().strip()\nprint(s + (\\\"r\\\" if s.endswith(\\\"e\\\") else \\\"er\\\"))\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/b.py <<'EOF'\nimport sys\nit = iter(sys.stdin.buffer.read().split())\nn = int(next(it))\ns = next(it)\nt = next(it)\nprint(\\\"Yes\\\" if all(y == 42 or x == y for x, y in zip(s, t)) else \\\"No\\\")\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/d.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    int N, M;\n    long long K, X, Y;\n    cin >> N >> M >> K;\n    cin >> X >> Y;\n\n    vector<long long> A(N), B(M);\n    for (auto &x : A) cin >> x;\n    for (auto &x : B) cin >> x;\n\n    sort(A.begin(), A.end());\n    sort(B.begin(), B.end());\n\n    vector<long long> prefA(N + 1, 0), prefB(M + 1, 0), prefQ(M + 1, 0);\n    for (int i = 0; i < N",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/e.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\n\nstruct Node {\n    int mn, mnpos, mx, mxpos;\n};\nNode merge_node(const Node& a, const Node& b) {\n    Node c;\n    if (a.mn < b.mn || (a.mn == b.mn && a.mnpos < b.mnpos)) {\n        c.mn = a.mn; c.mnpos = a.mnpos;\n    } else {\n        c.mn = b.mn; c.mnpos = b.mnpos;\n    }\n    if (a.mx > b.mx || (a.mx == b.mx && a.mxpos < b.mxpos)) {\n        c.mx = a.mx; c.mxpos = a.mxpos;\n    } else {\n        c.mx = b.mx; c.mx",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/f.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nusing int64 = long long;\n\nstruct Agg {\n    int64 w = 0;\n    int64 wx = 0;\n};\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    int N;\n    int64 M;\n    cin >> N >> M;\n    vector<int64> A(N), B(N);\n    for (auto &x : A) cin >> x;\n    for (auto &x : B) cin >> x;\n\n    vector<Agg> sumDiag(2 * N + 1);\n    vector<Agg> diffDiag(2 * N + 1);\n    const int off = N - 1;\n\n    for (int r = 1; r <",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/c.py <<'EOF'\nimport sys\ndata = list(map(int, sys.stdin.buffer.read().split()))\nn = data[0]\ntop = [-1, -1, -1]\nout = []\nfor k, x in enumerate(data[1:]):\n    if x > top[0]:\n        top[0], top[1], top[2] = x, top[0], top[1]\n    elif x > top[1]:\n        top[1], top[2] = x, top[1]\n    elif x > top[2]:\n        top[2] = x\n    if k >= 2:\n        out.append(str(top[2]))\nsys.stdout.write(\\\"\\\\n\\\".join(out))\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import combinations\n\ndef mat(b):\n    s=[i.bit_count() for i in range(1<<b)]\n    K=b+1\n    # G[first][last]\n    G=[[-10**9]*K for _ in range(K)]\n    for i,x in enumerate(s):\n        # dp over suffix after i by last category, first fixed x\n        dp=[-10**9]*K\n        dp[x]=1\n        for y in s[i+1:]:\n            m=max(dp[z] for z in range(y,K))\n            dp[y]=max(dp[y],m+1)\n        for y,v in enumerate(dp):\n            if x>=y:G[x][y]=max(G[x][y]",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndef Hmat(b):\n s=[i.bit_count() for i in range(1<<b)]; K=b+1\n H=[[-10**9]*K for _ in range(K)]\n # For every start position, dp ending exact rank scanning suffix\n for p,x in enumerate(s):\n  dp=[-10**9]*K; dp[x]=1\n  for y in s[p+1:]:\n   z=max(dp[y:])+1\n   dp[y]=max(dp[y],z)\n  for t in range(x+1):\n   H[x][t]=max(H[x][t],max(dp[t:]))\n return H\nfor b in range(1,8):\n H=Hmat(b)\n print(b, all(len(set(H[x][:x]))<=1 for x in range(b+1)), [H[x][:x+1] for x in range(b+1)])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\ndef Hmat(b):\n s=[i.bit_count() for i in range(1<<b)]; K=b+1; Z=-10**9\n H=[[Z]*K for _ in range(K)]\n for p,x in enumerate(s):\n  dp=[Z]*K; dp[x]=1\n  for y in s[p+1:]: dp[y]=max(dp[y],max(dp[y:])+1)\n  for t in range(x+1): H[x][t]=max(H[x][t],max(dp[t:]))\n return H\nfor b in range(1,9):\n H=Hmat(b); K=b+1; vals=[]\n for x1 in range(K):\n  for x2 in range(x1+1,K):\n   for t1 in range(K):\n    for t2 in range(t1+1,K):\n     a,bv,c,d=H[x1][t1],H[x1][t2],H[x2][t1],H[x2][t2]\n    ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nZ=-100000\n\ndef hmat(s,K):\n G=[[Z]*K for _ in range(K)]\n # direct subsequence DP for all start positions, maintaining exact ending values\n for p,x in enumerate(s):\n  dp=[Z]*K; dp[x]=1\n  for y in s[p+1:]:\n   z=max(dp[y:])+1\n   dp[y]=max(dp[y],z)\n  for y,v in enumerate(dp):\n   if y<=x:G[x][y]=max(G[x][y],v)\n return [[max(G[x][t:]) if t<=x else Z for t in range(K)] for x in range(K)]\nfor K in range(2,7):\n for _ in range(10000):\n  s=[random.randrange(K) f",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nZ=-10**9\nG=[[[Z]]]\nG[0][0][0]=1\nfor b in range(1,10):\n prev=G[b-1]; m=b+1\n gx=[[Z]*m for _ in range(m)]; gy=[[Z]*m for _ in range(m)]\n for a in range(b):\n  for z in range(a+1): gx[a][z]=prev[a][z]\n  for z in range(a+1): gy[a+1][z+1]=prev[a][z]\n py=[[Z]*m for _ in range(m)]\n for z in range(m):\n  cur=Z\n  for x in range(z,m):\n   cur=max(cur,gy[x][z]); py[z][x]=cur\n curG=[[Z]*m for _ in range(m)]\n for a in range(m):\n  for z in range(a+1):\n   v=max(gx[a][z],gy[a][z])\n ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nZ=-10**9\nG=[[[1]]]\nfor b in range(1,10):\n prev=G[-1];m=b+1;gx=[[Z]*m for _ in range(m)];gy=[[Z]*m for _ in range(m)]\n for a in range(b):\n  for z in range(a+1): gx[a][z]=prev[a][z];gy[a+1][z+1]=prev[a][z]\n py=[[Z]*m for _ in range(m)]\n for z in range(m):\n  cur=Z\n  for x in range(z,m):cur=max(cur,gy[x][z]);py[z][x]=cur\n ng=[[Z]*m for _ in range(m)]\n for a in range(m):\n  for z in range(a+1):\n   ng[a][z]=max(gx[a][z],gy[a][z],*(gx[a][x]+py[z][x] for x in",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/g.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nusing int64 = long long;\n\nstatic const int MAXB = 60;\nstatic const int64 NEG = numeric_limits<int64>::lowest() / 4;\n\n// H[b][x][t]: maximum length of a non-increasing subsequence in\n// popcount(0),...,popcount(2\"'^b-1) that starts at x and ends at a value >= t.\nint64 Htab[MAXB + 1][MAXB + 1][MAXB + 1];\nbool monotone[MAXB + 1];\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // G[b",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/d.cpp -o .tmp/d'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \".tmp/d <<'EOF'\n2 3 10\n50 6\n22 30\n20 12 24\nEOF\n.tmp/d <<'EOF'\n1 7 67\n677677677766666 0\n777666777\n20 12 24 67 67 67 67\nEOF\n.tmp/d <<'EOF'\n20 20 30\n605776135 133105105\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 42347",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \".tmp/f <<'EOF'\n4 19\n2 3 1 1\n3 4 4 10\nEOF\n.tmp/f <<'EOF'\n6 67\n1 6 9 2 3 1\n1 10 3 7 2 2\nEOF\n.tmp/f <<'EOF'\n20 676767\n60932 508200 22883 481150 426836 554098 276223 307959 133025 573906 17711 413230 274246 500277 524959 477728 546547 43099 324227 660187\n552697 293978 246000 159233 213736 628198 394200 194076 618720 453035 615100 331522 669419 180856 530693 399531 223149 159334 102107 598633\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \".tmp/g <<'EOF'\n5\n3 6\n1 1\n2 15\n100 10000000\n514284786278117031 620546740167642909\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \".tmp/e <<'EOF'\n5 3\n3 1 4 2 5\n1 3\n1 5\n1 4\nEOF\n.tmp/e <<'EOF'\n6 7\n3 6 5 2 4 1\n4 5\n2 3\n3 5\n4 6\n3 4\n1 6\n3 5\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 solutions/c.py <<'EOF'\n5\n1 2 1 2 3\nEOF\npython3 solutions/c.py <<'EOF'\n10\n1 1 1 3 2 5 4 3 6 5\nEOF\npython3 solutions/c.py <<'EOF'\n10\n11 9 1 3 17 19 10 19 17 3\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 solutions/b.py <<'EOF'\n8\nchokudai\n**o*u*ai\nEOF\npython3 solutions/b.py <<'EOF'\n5\nsnuke\nsnake\nEOF\npython3 solutions/b.py <<'EOF'\n5\nyiwiy\n*****\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 solutions/a.py <<'EOF'\nlive\nEOF\npython3 solutions/a.py <<'EOF'\nfemur\nEOF\npython3 solutions/a.py <<'EOF'\nchimpanzee\nEOF\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"git status --short && sed -n '1,240p' solutions/g.cpp && sed -n '1,160p' solutions/d.cpp && sed -n '1,180p' solutions/f.cpp\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 solutions/c.py <<'EOF'\n5\n1 2 1 2 3\nEOF\npython3 solutions/c.py <<'EOF'\n10\n1 1 1 3 2 5 4 3 6 5\nEOF\npython3 solutions/c.py <<'EOF'\n10\n11 9 1 3 17 19 10 19 17 3\nEOF\"",
+   "exit_code": 0
+  }
+ ]
+}

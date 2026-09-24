@@ -1,0 +1,5 @@
+ledgerlite に多通貨対応を追加しました。任意の `Currency` 列と `base` の既定動作、通貨別の重複判定、日付に応じた為替換算、レポート表示を実装しています。[fx.py](~/luna-bench/ws/runs-t1_feature-gpt-6-luna-max-r2/ledgerlite/fx.py) の換算は7日前までの過去レートを使い、金額を半端処理します。
+
+CLI に `--base` と `--rates` を追加し、レート不足時はトレースバックなしで終了コード2を返します。新しい挙動のテストを追加しました。
+
+確認結果: `python3 -m unittest` は15件すべて成功し、`git diff --check` も通りました。

@@ -1,0 +1,16 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'cat report.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'python -m json.tool answers.json'",
+   "exit_code": 127
+  },
+  {
+   "command": "/bin/bash -lc 'jq -e . answers.json'",
+   "exit_code": 0
+  }
+ ]
+}

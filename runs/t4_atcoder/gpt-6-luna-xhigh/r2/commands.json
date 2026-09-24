@@ -1,0 +1,196 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -la && rg --files problems'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md problems/b.md problems/c.md problems/d.md problems/e.md problems/f.md problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom collections import Counter\nfor R in range(1,256):\n    for L in range(R+1):\n        a=[x.bit_count() for x in range(L,R+1)]\n        d=[]\n        for x in a:\n            z=1+max((d[i] for i in range(len(d)) if i>=x),default=0)\n            d.append(z)\n        # direct LNIS: process tails of -a\n        tails=[]\n        import bisect\n        for x in a:\n            j=bisect.bisect_right(tails,-x)\n            if j==len(tails): tails.append(-x)\n            else: tai",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom math import comb\n\ndef cnt_upto(n):\n d=[0]*61\n for k in range(61):\n  # standard count numbers 0..n with k ones\n  s=0; bits=bin(n)[2:]\n  for i,c in enumerate(bits):\n   rem=len(bits)-i-1\n   if c=='1':\n    if k<=rem: s+=comb(rem,k)\n    k-=1\n    if k<0: break\n  else:\n   if k==0:s+=1\n  d[k if False else 0] += 0\n  # easier brute recurrence below\n # skip\n\ndef hist(n):\n h=[0]*61\n for x in range(n+1): h[x.bit_count()]+=1\n return h\n# manageable 10m\nh=hist(10_000_000)\nh0",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom collections import Counter\nfor n in range(1,6):\n c=Counter(); num=0\n for i in range(1<<n):\n  x=i.bit_count()\n  y=max((a for a,v in c.items() if a<x and v),default=None)\n  if y is None: num+=1\n  else:\n   c[y]-=1\n  c[x]+=1\n print(n,num,dict(sorted(c.items())))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"ls -la solutions && find . -maxdepth 2 -name 'AGENTS.md' -o -name 'SKILL.md'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom math import comb\nfor k in range(1,8):\n s=[x.bit_count() for x in range(1<<k)]\n d=[0]*(k+1)\n for x in s: d[x]=1+max(d[x:k+1], default=0) if False else 1+max(d[x:])\n print('k',k,'C', [comb(k,b) for b in range(k+1)], 'ending',d)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/f.cpp -o .tmp/f'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/e.cpp -o .tmp/e'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/c.cpp -o .tmp/c'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/d.cpp -o .tmp/d'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'chimpanzee\\\\n' | python3 solutions/a.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '8\\\\nchokudai\\\\n**o*u*ai\\\\n' | python3 solutions/b.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\\\\nsnuke\\\\nsnake\\\\n' | python3 solutions/b.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'live\\\\n' | python3 solutions/a.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\\\\nyiwiy\\\\n*****\\\\n' | python3 solutions/b.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\\\\n1 2 1 2 3\\\\n' | .tmp/c\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '10\\\\n11 9 1 3 17 19 10 19 17 3\\\\n' | .tmp/c\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '10\\\\n1 1 1 3 2 5 4 3 6 5\\\\n' | .tmp/c\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '1 7 67\\\\n677677677766666 0\\\\n777666777\\\\n20 12 24 67 67 67 67\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf 'femur\\\\n' | python3 solutions/a.py\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5 3\\\\n3 1 4 2 5\\\\n1 3\\\\n1 5\\\\n1 4\\\\n' | .tmp/e\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 20 30\\\\n605776135 133105624 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '6 7\\\\n3 6 5 2 4 1\\\\n4 5\\\\n2 3\\\\n3 5\\\\n4 6\\\\n3 4\\\\n1 6\\\\n3 5\\\\n' | .tmp/e\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '4 19\\\\n2 3 1 1\\\\n3 4 4 10\\\\n' | .tmp/f\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '6 67\\\\n1 6 9 2 3 1\\\\n1 10 3 7 2 2\\\\n' | .tmp/f\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 676767\\\\n60932 508200 22883 481150 426836 554098 276223 307959 133025 573906 17711 413230 274246 500277 524959 477728 546547 43099 324227 660187\\\\n552697 293978 246000 159233 213736 628198 394200 194076 618720 453035 615100 331522 669419 180856 530693 399531 223149 159334 102107 598633\\\\n' | .tmp/f\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport itertools\nfor k in range(1,8):\n seq=[x.bit_count() for x in range(1<<k)]\n C=[]\n for a in range(k+1):\n  d=[-10**9]*(k+1); d[a]=0\n  for x in seq:\n   d[x]=max(d[x],1+max(d[x:]))\n  C.append(d)\n # each output b, maximizing a in a>=? just all rows; row's C; check argmax indices monotone columns for random row weights d[a]=0\n arg=[]\n for b in range(k+1):\n  v=max(range(k+1), key=lambda a:C[a][b])\n  arg.append(v)\n mono=all(arg[i]<=arg[i+1] for i in range(k))\n # chec",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**6\nfor k in range(1,9):\n seq=[x.bit_count() for x in range(1<<k)]\n T=[]\n for a in range(k+1):\n  d=[NEG]*(k+1);d[a]=0\n  for x in seq:\n   d[x]=max(d[x],1+max(d[x:]))\n  d[a]=max(d[a],0)\n  T.append(d)\n # matrix rows a columns b, values defined all (include b>a -inf)\n monge=True; anti=True\n for a in range(k):\n  for aa in range(a+1,k+1):\n   for b in range(k):\n    for bb in range(b+1,k+1):\n     if T[a][b]>NEG and T[aa][bb]>NEG and T[a][bb]>NEG and T[aa][b]>NEG:\n ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nN=-10**6\nk=3; seq=[x.bit_count() for x in range(1<<k)]\nT=[]\nfor a in range(k+1):\n d=[N]*(k+1); d[a]=0\n for x in seq:d[x]=max(d[x],1+max(d[x:]))\n T.append(d)\nprint(T)\nfor a in range(k):\n for aa in range(a+1,k+1):\n  for b in range(k):\n   for bb in range(b+1,k+1):\n    if T[a][b]>N and T[aa][bb]>N and T[a][bb]>N and T[aa][b]>N:\n     if T[a][b]+T[aa][bb] \"'!= T[a][bb]+T[aa][b]:\n      print(a,aa,b,bb,[T[a][b],T[aa][bb],T[a][bb],T[aa][b]])\nPY'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nN=-10**6\nfor k in range(1,9):\n seq=[x.bit_count() for x in range(1<<k)]; T=[]\n for a in range(k+1):\n  d=[N]*(k+1);d[a]=0\n  for x in seq:d[x]=max(d[x],1+max(d[x:]))\n  T.append(d)\n mono=True\n for a in range(k):\n  for aa in range(a+1,k+1):\n   for b in range(k):\n    for bb in range(b+1,k+1):\n     if bb<=a and T[a][b]+T[aa][bb] \"'!= T[a][bb]+T[aa][b]:\n      mono=False\n print(k,mono)\nPY'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nNEG=-10**9\nfor k in range(2,10):\n seq=[x.bit_count() for x in range(1<<k)]; T=[]\n for a in range(k+1):\n  d=[NEG]*(k+1);d[a]=0\n  for x in seq:d[x]=max(d[x],1+max(d[x:]))\n  T.append(d)\n ok=True\n for _ in range(100000):\n  w=[random.randrange(-1000,1000) for _ in range(k+1)]\n  arg=[max(range(b,k+1),key=lambda a:w[a]+T[a][b]) for b in range(k+1)]\n  if any(arg[b]>arg[b+1] for b in range(k)):\n   print('counter',k,w,arg);ok=False;break\n print(k,ok)\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nT=[[[1]]]\nfor k in range(1,9):\n d=k+1; A=[[NEG]*d for _ in range(d)]; B=[[NEG]*d for _ in range(d)]\n p=T[k-1]\n for a in range(k):\n  for b in range(k): A[a][b]=p[a][b]\n for b in range(k): A[k][b]=p[k-1][b]\n A[k][k]=0\n B[0][0]=0\n for a in range(1,k+1):\n  for b in range(1,k+1): B[a][b]=p[a-1][b-1]\n C=[[NEG]*d for _ in range(d)]\n for a in range(d):\n  for b in range(a+1): C[a][b]=max(A[a][c]+B[c][b] for c in range(b,a+1))\n T.append(C)\n # compare all input ve",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nT=[[[1]]]\nfor k in range(1,9):\n d=k+1; A=[[NEG]*d for _ in range(d)]; B=[[NEG]*d for _ in range(d)]; p=T[k-1]\n for a in range(k):\n  for b in range(k): A[a][b]=p[a][b]\n for b in range(k): A[k][b]=p[k-1][b]\n A[k][k]=0; B[0][0]=0\n for a in range(1,k+1):\n  for b in range(1,k+1): B[a][b]=p[a-1][b-1]\n C=[[NEG]*d for _ in range(d)]\n for a in range(d):\n  for b in range(a+1):\n   C[a][b]=max((A[a][c]+B[c][b] for c in range(b,a+1) if A[a][c]>NEG//2 and B[c][b]>NEG",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**9\nT=[[[1]]]\nfor k in range(1,11):\n d=k+1;A=[[NEG]*d for _ in range(d)];B=[[NEG]*d for _ in range(d)];p=T[-1]\n for a in range(k):\n  for b in range(k):A[a][b]=p[a][b]\n for b in range(k):A[k][b]=p[k-1][b]\n A[k][k]=0;B[0][0]=0\n for a in range(1,k+1):\n  for b in range(1,k+1):B[a][b]=p[a-1][b-1]\n C=[[NEG]*d for _ in range(d)]\n for a in range(d):\n  for b in range(a+1): C[a][b]=max((A[a][c]+B[c][b] for c in range(b,a+1) if A[a][c]>NEG//2 and B[c][b]>NEG//2),defau",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nNEG=-10**12\nT=[[[1]]]\nfor k in range(1,11):\n d=k+1;p=T[-1];A=[[NEG]*d for _ in range(d)];B=[[NEG]*d for _ in range(d)]\n for a in range(k):\n  for b in range(k):A[a][b]=p[a][b]\n for b in range(k):A[k][b]=p[k-1][b]\n A[k][k]=0;B[0][0]=0\n for a in range(1,k+1):\n  for b in range(1,k+1):B[a][b]=p[a-1][b-1]\n C=[[NEG]*d for _ in range(d)]\n for a in range(d):\n  for b in range(a+1): C[a][b]=max((A[a][c]+B[c][b] for c in range(b,a+1) if A[a][c]>NEG//2 and B[c][b",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 20 30\\\\n605776135 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/g.cpp -o .tmp/g'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 20 30\\\\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"rg -n '605|973|218' problems/d.md\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '5\\\\n3 6\\\\n1 1\\\\n2 15\\\\n100 10000000\\\\n514284786278117031 620546740167642909\\\\n' | .tmp/g\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nNEG=-10**12\nT=[[[1]]]\nfor k in range(1,61):\n n=k+1;p=T[-1];A=[[NEG]*n for _ in range(n)];B=[[NEG]*n for _ in range(n)]\n for a in range(k):\n  for b in range(k): A[a][b]=p[a][b]\n for b in range(k): A[k][b]=p[k-1][b]\n A[k][k]=0;B[0][0]=0\n for a in range(1,n):\n  for b in range(1,a+1):B[a][b]=p[a-1][b-1]\n C=[[NEG]*n for _ in range(n)]\n for a in range(n):\n  for b in range(a+1):C[a][b]=max(A[a][c]+B[c][b] for c in range(b,a+1) if A[a][c]>NEG//2 and B[c][b]>NEG//2)\n T.app",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport bisect, random, subprocess\nrng = random.Random(7)\ncases = []\nfor l in range(1, 100):\n    for r in range(l, min(100, l + 8) + 1):\n        cases.append((l, r))\nfor _ in range(300):\n    l = rng.randrange(1, 2000)\n    r = l + rng.randrange(0, 80)\n    cases.append((l, r))\ndata = str(len(cases)) + '\\\\n' + ''.join(f'{l} {r}\\\\n' for l, r in cases)\nout = subprocess.check_output(['.tmp/g'], input=data.encode()).decode().split()\nfor (l, r), got in zip(cases, map(int, ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'print(10000); [print(100000000000000000, 1000000000000000000) for _ in range(10000)]' | /usr/bin/time -f '%e sec' .tmp/g > /dev/null\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"sed -n '90,105p' problems/d.md\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"printf '20 20 30\\\\n605776135 133105105\\\\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\\\\n' | .tmp/d\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'git status --short && ls -l solutions'",
+   "exit_code": 0
+  }
+ ]
+}

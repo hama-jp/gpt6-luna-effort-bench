@@ -1,0 +1,48 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls problems && ls'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'for f in problems/{a,b,c,d,e,f,g}.md; do echo \"### $f\"; cat \"$f\"; done'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"mkdir -p solutions && cat > solutions/a.py <<'EOF'\ns=input().strip()\nprint(s+'r' if s.endswith('e') else s+'er')\nEOF\ncat > solutions/b.py <<'EOF'\nimport sys\nit=sys.stdin.read().split()\nn=int(it[0]); s,t=it[1:3]\nprint('Yes' if all(y=='*' or x==y for x,y in zip(s,t)) else 'No')\nEOF\ncat > solutions/c.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;if(\"'!(cin>>n))return 0; multiset<long long,greater<long long>> s;",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/f.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;\nusing int64=long long;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int n;int64 mod;if(\"'!(cin>>n>>mod))return 0;vector<int64>a(n),b(n);for(auto&x:a)cin>>x;for(auto&x:b)cin>>x;int len=2*n-1;vector<int64> su(len),wu(len),sv(len),wv(len);for(int r=0;r<n;r++)for(int c=0;c<n;c++){int64 w=(a[r]*b[c])%mod;int u=r+c,v=r-c+n-1;su[u]+=w;wu[u]+=w*u;sv[v]+=w;wv[v]+=w*v;}auto prep=[&](vector<int64>&s,vector",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\np='solutions/e.cpp'\ns=open(p).read()\ns=s.replace('struct Node{int mn,mx,imn,imx;};\\\\nint main()', 'struct Node{int mn,mx,imn,imx;};\\\\nNode mergeN(Node a,Node b){if(a.imn==-1)return b;if(b.imn==-1)return a;return {min(a.mn,b.mn),max(a.mx,b.mx),a.mn<=b.mn?a.imn:b.imn,a.mx>=b.mx?a.imx:b.imx};}\\\\nint main()')\ns=s.replace('left={min(a.mn,b.mn),max(a.mx,b.mx),a.mn<=b.mn?a.imn:b.imn,a.mx>=b.mx?a.imx:b.imx};', 'left=mergeN(a,b);')\ns=s.replace('right={min(a.mn,b.mn),max(a.",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"cat > solutions/g.cpp <<'EOF'\n#include <bits/stdc++.h>\nusing namespace std;using int64=long long;\nint main(){ios::sync_with_stdio(false);cin.tie(nullptr);int T;if(\"'!(cin>>T))return 0;const int B=61;long long C[B+1][B+1]{};C[0][0]=1;for(int n=1;n<=B;n++){C[n][0]=C[n][n]=1;for(int k=1;k<n;k++)C[n][k]=C[n-1][k-1]+C[n-1][k];}auto countLE=[&](int64 x,int k){if(x<0)return 0LL;long long res=0;int ones=0;for(int bit=60;bit>=0;--bit)if((x>>bit)&1LL){int need=k-ones;if(need>=0&&need<=bit)r",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -la solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport pathlib,re,subprocess,sys\nroot=pathlib.Path('.')\nfor ch in 'cdefg':\n    src=f'solutions/{ch}.cpp'; exe=f'solutions/.{ch}_check'\n    p=subprocess.run(['g++','-std=c++20','-O2',src,'-o',exe],capture_output=True,text=True)\n    if p.returncode: print(ch,'COMPILE FAILED',p.stderr);sys.exit(1)\nfor ch in 'abcdefg':\n    md=(root/f'problems/{ch}.md').read_text()\n    blocks=re.findall(r'\"'```'\"\\\\s*\\\\n(.*?)\\\\n\"'```'\"',md,re.S)\n    tests=[]\n    for i in range(0,len(blo",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 solutions/g.cpp -o solutions/.g_check && python3 -u - <<'PY'\nimport pathlib,re,subprocess,sys\nfor ch in 'abcdefg':\n md=pathlib.Path(f'problems/{ch}.md').read_text(); blocks=re.findall(r'\"'```'\"\\\\s*\\\\n(.*?)\\\\n\"'```'\"',md,re.S)\n for ix in range(0,len(blocks),2):\n  inp,want=blocks[ix],blocks[ix+1].strip(); cmd=[sys.executable,f'solutions/{ch}.py'] if ch in 'ab' else [f'solutions/.{ch}_check']\n  p=subprocess.run(cmd,input=inp,text=True,capture_output=True); got=p.st",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -u - <<'PY'\nimport pathlib,re,subprocess,sys\nfor ch in 'abcdefg':\n md=pathlib.Path(f'problems/{ch}.md').read_text()\n parts=re.split(r'### 入力例 \\\\d+\\\\s*',md)[1:]\n for si,part in enumerate(parts,1):\n  blocks=re.findall(r'\"'```'\"\\\\s*\\\\n(.*?)\\\\n\"'```'\"',part,re.S)\n  inp,want=blocks[0],blocks[1].strip()\n  cmd=[sys.executable,f'solutions/{ch}.py'] if ch in 'ab' else [f'solutions/.{ch}_check']\n  p=subprocess.run(cmd,input=inp,text=True,capture_output=True); got=p.stdout.strip()\n  ",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom pathlib import Path\nPath('solutions/g.cpp').unlink(missing_ok=True)\nfor p in Path('solutions').glob('.*_check'):\n    p.unlink()\nPY\nls -la solutions\"",
+   "exit_code": 0
+  }
+ ]
+}

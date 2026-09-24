@@ -1,0 +1,34 @@
+{
+  "classes": {
+    "F1_Import": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "F2_RateLookup": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "F3_Rounding": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "F4_BaseUntouched": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "F5_DedupeCurrency": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "F6_ReportAndCli": {
+      "pass": true,
+      "last_line": "OK"
+    },
+    "R_Regression": {
+      "pass": true,
+      "last_line": "OK"
+    }
+  },
+  "passed": 7,
+  "total": 7
+}

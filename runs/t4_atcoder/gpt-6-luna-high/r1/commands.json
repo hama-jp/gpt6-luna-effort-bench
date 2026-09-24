@@ -1,0 +1,56 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls -R'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/c.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/e.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/b.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/d.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/f.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'g++ -std=c++20 -O2 solutions/c.cpp -o ~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/c && g++ -std=c++20 -O2 solutions/d.cpp -o ~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/d && g++ -std=c++20 -O2 solutions/e.cpp -o ~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/e && g++ -std=c++20 -O2 solutions/f.cpp -o ~/luna-bench/ws/runs-t4_atcoder-gpt-6-luna-high-r1/solutions/f'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport subprocess, pathlib\ncases={\n'a.py':[('live\\\\n','liver'),('femur\\\\n','femurer'),('chimpanzee\\\\n','chimpanzeer')],\n'b.py':[('8\\\\nchokudai\\\\n**o*u*ai\\\\n','Yes'),('5\\\\nsnuke\\\\nsnake\\\\n','No'),('5\\\\nyiwiy\\\\n*****\\\\n','Yes')],\n'c':[('5\\\\n1 2 1 2 3\\\\n','1\\\\n1\\\\n2'),('10\\\\n1 1 1 3 2 5 4 3 6 5\\\\n','1\\\\n1\\\\n1\\\\n2\\\\n3\\\\n3\\\\n4\\\\n5'),('10\\\\n11 9 1 3 17 19 10 19 17 3\\\\n','1\\\\n3\\\\n9\\\\n11\\\\n11\\\\n17\\\\n17\\\\n17')],\n'd':[('2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n','4'),('1 7 67\\\\n6",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport subprocess, pathlib\ncases={\n'd':[('2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n','4'),('1 7 67\\\\n677677677766666 0\\\\n777666777\\\\n20 12 24 67 67 67 67\\\\n','1'),('20 20 30\\\\n605776135 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 ",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport subprocess,pathlib\ns='20 20 30\\\\n605776135 133105105\\\\n97363214 218434035 697895427 109255624 299037330 227873982 195540071 411713803 828357845 244535208 138059186 639510883 39844882 707397687 371274487 696536603 351588202 319490007 47121612 87169661\\\\n32256972 567982330 554885983 299718223 443859449 687952877 264684780 666659381 576335424 941894234 406248934 321334900 423472560 863738035 213143887 384834384 468161291 673106162 164648316 15903323\\\\n'\nfor p,",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -l solutions'",
+   "exit_code": 0
+  }
+ ]
+}

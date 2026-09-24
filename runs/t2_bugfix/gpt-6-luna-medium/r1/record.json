@@ -1,0 +1,29 @@
+{
+  "task": "t2_bugfix",
+  "model": "gpt-6-luna",
+  "effort": "medium",
+  "rep": 1,
+  "wall_s": 129.4,
+  "returncode": 0,
+  "timed_out": false,
+  "requests": 14,
+  "max_request_input": 23445,
+  "long_prompt_requests": 0,
+  "commands": 5,
+  "web_searches": 0,
+  "usage": {
+    "input_tokens": 268589,
+    "cached_input_tokens": 231936,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4798,
+    "reasoning_output_tokens": 1140,
+    "total_tokens": 273387
+  },
+  "api_cost_usd": 0.00838,
+  "cost_complete": true,
+  "score": 8,
+  "total": 8,
+  "auth_synced_back": false,
+  "codex_version": "codex-cli 0.156.1",
+  "started": "2026-09-24T14:32:05"
+}

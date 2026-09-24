@@ -1,0 +1,104 @@
+{
+ "commands": [
+  {
+   "command": "/bin/bash -lc 'ls problems && rg --files problems solutions'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'cat problems/a.md problems/b.md problems/c.md problems/d.md problems/e.md problems/f.md problems/g.md'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import accumulate\nfor R in range(1,256):\n x=[i.bit_count() for i in range(R+1)]\n for L in range(R+1):\n  d=[]\n  for a in x[L:R+1]:\n   d.append(1+max((d[i] for i in range(len(d)) if x[L+i]>=a),default=0))\n  ans=max(d)\n  freq=max(x[L:R+1].count(v) for v in range(9))\n  if ans\"'!=freq:\n   print('\"'counter',L,R,x[L:R+1],ans,freq);raise SystemExit\nprint('all equal')\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor R in range(2,40):\n a=[i.bit_count() for i in range(R+1)]\n for L in range(R+1):\n  d=[]\n  for i,x in enumerate(a[L:R+1]):\n   d.append(1+max((d[j] for j in range(i) if a[L+j]>=x),default=0))\n  ln=max(d,default=0); mf=max((a[L:R+1].count(k) for k in range(7)),default=0)\n  if ln>mf:\n   print((L,R),a[L:R+1],ln,mf)\n   if ln>mf+1: raise SystemExit\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nmx=(0,None)\nfor R in range(2,1000):\n a=[i.bit_count() for i in range(R+1)]\n for L in range(R+1):\n  dp=[0]*8\n  for x in a[L:R+1]:\n   dp[x]=1+max(dp[x:])\n  ln=max(dp); mf=max(a[L:R+1].count(k) for k in range(10))\n  if ln-mf>mx[0]: mx=(ln-mf,(L,R,ln,mf,a[L:R+1]))\n  if ln>mf+1: print('greater',L,R,ln,mf);raise SystemExit\nprint(mx[0],mx[1][:4])\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import product\n\ndef mat(seq,K):\n C=[[0]*K for _ in range(K)]\n # for each v process subsequence restricted <=v; dp ending x\n for v in range(K):\n  d=[0]*K\n  for a in seq:\n   if a<=v: d[a]=1+max(d[a:])\n  C[v]=d\n return C\nfor k in range(1,5):\n seq=[i.bit_count() for i in range(1<<k)]; K=k+1\n C=mat(seq,K)\n print('k',k,'C')\n for row in C:print(row)\n # check Monge quadrangles standard for maximizing argmax over v for each x with random dp\n good=True\n for d",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom math import comb\nfor k in range(1,8):\n seq=[i.bit_count() for i in range(1<<k)]; K=k+1\n C=[[0]*K for _ in range(K)]\n for v in range(K):\n  d=[0]*K\n  for a in seq:\n   if a<=v: d[a]=1+max(d[a:])\n  C[v]=d\n bad=[]\n for v in range(K):\n  for x in range(K):\n   ex=1 if x==0 and v>=0 else (max((comb(k,y) for y in range(x,v+1)),default=0))\n   if C[v][x]\"'!=ex:bad.append((v,x,C[v][x],ex))\n print(k,'\"'bad',bad[:4],len(bad))\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfor k in range(1,8):\n seq=[i.bit_count() for i in range(1<<k)]\n D=[]\n for u in range(k+1):\n  d=[0]*(k+1)\n  for a in seq:\n   if a<=u:d[a]=1+max(d[a:])\n  D.append(d)\n # Monge check for maximize: D[i][j]+D[i+1][j+1] >=? <=?\n a=True;b=True\n for i in range(k):\n  for j in range(k):\n   x=D[i][j]+D[i+1][j+1]; y=D[i][j+1]+D[i+1][j]\n   if x<y:a=False\n   if x>y:b=False\n print(k,'max-Monge',a,'anti',b,'D',D if k<=3 else '')\nPY\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nfrom itertools import product\nfor k in range(1,7):\n seq=[i.bit_count() for i in range(1<<k)]; K=k+1\n D=[]\n for u in range(K):\n  d=[-999]*K\n  for a in seq:\n   if a<=u:d[a]=max(d[a],1+max([0]+[d[z] for z in range(a,K)]))\n  D.append(d)\n good=True\n for dp in product(range(2),repeat=K):\n  arg=[]\n  for z in range(K):arg.append(max(range(z,K),key=lambda u:dp[u]+D[u][z]))\n  if any(arg[z]>arg[z+1] for z in range(K-1)):\n   good=False;break\n # check Monge over triangular val",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nfor k in range(1,9):\n seq=[i.bit_count() for i in range(1<<k)]; K=k+1; INF=-10**9\n T=[[INF]*K for _ in range(K)]\n for u in range(K):\n  d=[INF]*K\n  for a in seq:\n   if a<=u:\n    best=max([0]+[d[v] for v in range(a,K)])\n    d[a]=max(d[a],best+1)\n  for z in range(K):T[u][z]=max(d[z],0 if z==u else INF)\n good=True\n for _ in range(1000):\n  w=[random.randrange(-20,20) for _ in range(K)]\n  arg=[]\n  for z in range(K): arg.append(max(range(z,K), key=lambda u:",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nINF=-10**9\nT=[[[1]]]\nfor k in range(1,8):\n old=T[-1]; K=k+1\n F=[[INF]*K for _ in range(K)]; S=[[INF]*K for _ in range(K)]\n for a in range(K): F[a][a]=0;S[a][a]=0\n # first half\n for a in range(k):\n  for b in range(k): F[a][b]=max(F[a][b],old[a][b])\n for b in range(k):F[k][b]=old[k-1][b]\n # second shifted\n for a in range(1,K):\n  oa=min(a-1,k-1)\n  for ob in range(k):\n   S[a][ob+1]=max(S[a][ob+1],old[oa][ob])\n # compose\n cur=[[INF]*K for _ in range(K)]\n for a in range",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nINF=-10**9\nT=[[[1]]]\nfor k in range(1,10):\n old=T[-1];K=k+1;F=[[INF]*K for _ in range(K)];S=[[INF]*K for _ in range(K)]\n for a in range(K):F[a][a]=S[a][a]=0\n for a in range(k):\n  for b in range(k):F[a][b]=max(F[a][b],old[a][b])\n for b in range(k):F[k][b]=old[k-1][b]\n for a in range(1,K):\n  for b in range(k):S[a][b+1]=max(S[a][b+1],old[min(a-1,k-1)][b])\n cur=[[INF]*K for _ in range(K)]\n for a in range(K):\n  for b in range(K):\n   for z in range(K):cur[",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\n\ndef smawk(rows,cols,val,out):\n if not rows:return\n red=[]\n for c in cols:\n  while red:\n   r=rows[len(red)-1]\n   if val(r,c)>val(r,red[-1]):red.pop()\n   else:break\n  if len(red)<len(rows):red.append(c)\n smawk(rows[1::2],red,val,out)\n for idx in range(0,len(rows),2):\n  r=rows[idx]\n  start=0 if idx==0 else red.index(out[rows[idx-1]])\n  end=len(red)-1 if idx+1>=len(rows) else red.index(out[rows[idx+1]])\n  best=red[start];bv=val(r,best)\n  for j in range(",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random\nINF=-10**9\nT=[[[1]]]\nfor k in range(1,12):\n old=T[-1];K=k+1;F=[[INF]*K for _ in range(K)];S=[[INF]*K for _ in range(K)]\n for a in range(K): F[a][a]=S[a][a]=0\n for a in range(k):\n  for b in range(k):F[a][b]=max(F[a][b],old[a][b])\n for b in range(k):F[k][b]=old[k-1][b]\n for a in range(1,K):\n  for b in range(k):S[a][b+1]=max(S[a][b+1],old[min(a-1,k-1)][b])\n cur=[[INF]*K for _ in range(K)]\n for a in range(K):\n  for b in range(K):\n   for z in range(K):cur",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport os, subprocess\nroot='solutions'\ninputs={\n'a': ['live\\\\n','femur\\\\n','chimpanzee\\\\n'],\n'b': ['8\\\\nchokudai\\\\n**o*u*ai\\\\n','5\\\\nsnuke\\\\nsnake\\\\n','5\\\\nyiwiy\\\\n*****\\\\n'],\n'c': ['5\\\\n1 2 1 2 3\\\\n','10\\\\n1 1 1 3 2 5 4 3 6 5\\\\n','10\\\\n11 9 1 3 17 19 10 19 17 3\\\\n'],\n'd': ['2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n','1 7 67\\\\n677677677766666 0\\\\n777666777\\\\n20 12 24 67 67 67 67\\\\n','20 20 30\\\\n605776135 133105105\\\\n97363214 218434035 697895427 109255624 299037330 22787",
+   "exit_code": 1
+  },
+  {
+   "command": "/bin/bash -lc \"ps -eo pid,etime,stat,cmd | rg 'python3 -|g\\\\+\\\\+|cc1plus|verify_'\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport os, subprocess\nsamples={\n'a':[('live\\\\n','liver'),('femur\\\\n','femurer'),('chimpanzee\\\\n','chimpanzeer')],\n'b':[('8\\\\nchokudai\\\\n**o*u*ai\\\\n','Yes'),('5\\\\nsnuke\\\\nsnake\\\\n','No'),('5\\\\nyiwiy\\\\n*****\\\\n','Yes')],\n'c':[('5\\\\n1 2 1 2 3\\\\n','1\\\\n1\\\\n2'),('10\\\\n1 1 1 3 2 5 4 3 6 5\\\\n','1\\\\n1\\\\n1\\\\n2\\\\n3\\\\n3\\\\n4\\\\n5'),('10\\\\n11 9 1 3 17 19 10 19 17 3\\\\n','1\\\\n3\\\\n9\\\\n11\\\\n11\\\\n17\\\\n17\\\\n17')],\n'd':[('2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n','4'),('1 7 67\\\\n6776776777",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 -c 'print(\\\"hello\\\")' && ls solutions\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 solutions/g.cpp -o .verify_g && printf '5\\\\n3 6\\\\n1 1\\\\n2 15\\\\n100 10000000\\\\n514284786278117031 620546740167642909\\\\n' | ./.verify_g\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc 'ls -la .verify_* 2>/dev/null'",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"g++ -std=c++20 -O2 solutions/a.cpp -o .verify_a && printf 'live\\\\n' | ./.verify_a && rm .verify_a\"",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport os, subprocess\ncases = {\n'a': [('live\\\\n','liver'), ('femur\\\\n','femurer'), ('chimpanzee\\\\n','chimpanzeer')],\n'b': [('8\\\\nchokudai\\\\n**o*u*ai\\\\n','Yes'), ('5\\\\nsnuke\\\\nsnake\\\\n','No'), ('5\\\\nyiwiy\\\\n*****\\\\n','Yes')],\n'c': [('5\\\\n1 2 1 2 3\\\\n','1\\\\n1\\\\n2'), ('10\\\\n1 1 1 3 2 5 4 3 6 5\\\\n','1\\\\n1\\\\n1\\\\n2\\\\n3\\\\n3\\\\n4\\\\n5'), ('10\\\\n11 9 1 3 17 19 10 19 17 3\\\\n','1\\\\n3\\\\n9\\\\n11\\\\n11\\\\n17\\\\n17\\\\n17')],\n'd': [('2 3 10\\\\n50 6\\\\n22 30\\\\n20 12 24\\\\n','4'), ('1 7 67\\\\",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport random, subprocess, time\nrandom.seed(4)\nqueries=[]\nfor _ in range(2500):\n    l=random.randint(1,500)\n    r=random.randint(l,min(800,l+180))\n    queries.append((l,r))\ndata=str(len(queries))+'\\\\n'+''.join(f'{l} {r}\\\\n' for l,r in queries)\nout=subprocess.run(['./.verify_g'],input=data,text=True,capture_output=True,check=True).stdout.split()\nfor (l,r),got in zip(queries,map(int,out)):\n    dp=[0]*61\n    for x in range(l,r+1):\n        v=x.bit_count()\n        dp[v",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nK=60; NEG=-10**30\nT=[[[1]]]\nfor k in range(1,K+1):\n old=T[-1];n=k+1\n F=[[NEG]*n for _ in range(n)];S=[[NEG]*n for _ in range(n)]\n for a in range(n):F[a][a]=S[a][a]=0\n for a in range(k):\n  for b in range(k):F[a][b]=max(F[a][b],old[a][b])\n for b in range(k):F[k][b]=old[k-1][b]\n for a in range(1,n):\n  for b in range(k):S[a][b+1]=max(S[a][b+1],old[min(a-1,k-1)][b])\n cur=[[NEG]*n for _ in range(n)]\n for a in range(n):\n  for b in range(n):\n   if F[a][b]==NEG:continue\n  ",
+   "exit_code": 0
+  },
+  {
+   "command": "/bin/bash -lc \"python3 - <<'PY'\nimport os\nfor name in os.listdir('.'):\n    if name.startswith('.verify_') and os.path.isfile(name):\n        os.remove(name)\nPY\nls -l solutions\ngit status --short\"",
+   "exit_code": 0
+  }
+ ]
+}
