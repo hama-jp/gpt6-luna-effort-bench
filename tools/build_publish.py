@@ -50,9 +50,11 @@ def command_summary(events: Path) -> dict:
 
 
 def main():
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    OUT.mkdir()
+    OUT.mkdir(exist_ok=True)
+    for p in OUT.iterdir():  # keep publish/.git (the GitHub repo) across rebuilds
+        if p.name == ".git":
+            continue
+        shutil.rmtree(p) if p.is_dir() else p.unlink()
     for f in ("PRECHECK.md", "RESULTS.md", "RESULTS_TABLE.md"):
         copy(EXP / f, OUT / f)
     copy(EXP / "PUBLISH_README.md", OUT / "README.md")
